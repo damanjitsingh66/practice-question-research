@@ -23,17 +23,29 @@ public class RotateArrayByKElements {
 //        }
 //        System.out.println(Arrays.toString(arr));
 
-    reverse(0,k,arr);
-    reverse(k,n,arr);
-    reverse(0,n,arr);
+
+        // In case k > n
+        k = k % n;
+
+        // Reverse first k elements
+        reverse( 0, k - 1,arr);
+
+        // Reverse remaining elements
+        reverse( k, n - 1,arr);
+
+        // Reverse entire array
+        reverse(0, n - 1,arr);
   System.out.println(Arrays.toString(arr));
 
     }
      public static void reverse(int start, int end, int[] arr){
-        for(int i= end-1; i>=start;i--){
-         arr[start]= arr[i];
-            start++;
-        }
+         while (start < end) {
+             int temp = arr[start];
+             arr[start] = arr[end];
+             arr[end] = temp;
+             start++;
+             end--;
+         }
      }
 
 }
