@@ -7,6 +7,7 @@ import weka.filters.unsupervised.attribute.ReplaceMissingValues;
 import weka.filters.supervised.attribute.AttributeSelection;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
+import weka.filters.supervised.instance.SMOTE;
 import weka.classifiers.trees.RandomForest;
 import weka.classifiers.functions.SMO; // SVM
 import weka.classifiers.bayes.NaiveBayes;
@@ -20,7 +21,7 @@ import java.util.Random;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-    System.out.println("=== SOFTWARE DEFECT PREDICTION (COMBINED HYBRID MODEL) ===");
+    System.out.println("=== SOFTWARE DEFECT PREDICTION (HYBRID MODEL with DATA BALANCING) ===");
 
     // Load NASA KC1 dataset
     String datasetPath = "data/kc1.arff";
@@ -30,12 +31,12 @@ public class Main {
     if (data.classIndex() == -1)
       data.setClassIndex(data.numAttributes() - 1);
 
-    // Handle missing values
+    // 1️⃣ Handle missing values
     ReplaceMissingValues replaceMissing = new ReplaceMissingValues();
     replaceMissing.setInputFormat(data);
     Instances noMissing = Filter.useFilter(data, replaceMissing);
 
-    // Feature selection using Information Gain
+    // 2️⃣ Feature selection using Information Gain
     AttributeSelection attrSel = new AttributeSelection();
     InfoGainAttributeEval eval = new InfoGainAttributeEval();
     Ranker ranker = new Ranker();
@@ -45,9 +46,18 @@ public class Main {
     attrSel.setInputFormat(noMissing);
     Instances reduced = Filter.useFilter(noMissing, attrSel);
 
-    System.out.println("\nLoaded dataset: " + reduced.numInstances() + " instances, " + reduced.numAttributes() + " attributes");
+    // 3️⃣ Apply SMOTE for Data Balancing
+    SMOTE smote = new SMOTE();
+    smote.setInputFormat(reduced);
+    smote.setPercentage(200); // increases minority class samples by 200%
+    smote.setNearestNeighbors(5);
+    Instances balanced = Filter.useFilter(reduced, smote);
 
-    // Build individual base models
+    System.out.println("\nDataset after preprocessing:");
+    System.out.println("Instances: " + balanced.numInstances());
+    System.out.println("Attributes: " + balanced.numAttributes());
+
+    // 4️⃣ Build individual base models
     RandomForest rf = new RandomForest();
     rf.setNumIterations(200);
     rf.setSeed(42);
@@ -61,14 +71,14 @@ public class Main {
     IBk knn = new IBk();
     knn.setKNN(5);
 
-    // Create Hybrid Ensemble using Majority Voting
+    // 5️⃣ Create Hybrid Ensemble using Majority Voting
     Vote hybrid = new Vote();
     Classifier[] classifiers = {rf, svm, nb, rt, knn};
     hybrid.setClassifiers(classifiers);
     hybrid.setOptions(new String[]{"-R", "MAJ"}); // majority voting
 
     System.out.println("\n=== TRAINING HYBRID ENSEMBLE MODEL ===");
-    evaluateCombinedHybrid(hybrid, reduced);
+    evaluateCombinedHybrid(hybrid, balanced);
   }
 
   private static void evaluateCombinedHybrid(Classifier classifier, Instances data) throws Exception {
@@ -87,6 +97,6 @@ public class Main {
             eval.weightedAreaUnderROC());
 
     System.out.println("\nThis accuracy represents the performance of ALL FIVE classifiers working together\n" +
-            "under a Majority Voting ensemble — a true hybrid combination.");
+            "under a Majority Voting ensemble — a true hybrid combination with balanced data.");
   }
 }
