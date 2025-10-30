@@ -22,13 +22,16 @@
             <artifactId>weka-stable</artifactId>
             <version>3.8.6</version>
         </dependency>
-
         <dependency>
             <groupId>nz.ac.waikato.cms.weka</groupId>
             <artifactId>wekaDeeplearning4j</artifactId>
-            <version>1.8.0-SNAPSHOT</version>
+            <version>1.7.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>SMOTE</artifactId>
+            <version>1.0.3</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -59,3 +62,4 @@
         </plugins>
     </build>
 </project>
+
