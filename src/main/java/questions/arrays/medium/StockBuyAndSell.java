@@ -31,4 +31,7 @@ public class StockBuyAndSell {
         }
        System.out.println(profit);
     }
+
+    //time complexity - O(n)
+    //space complexity - O(1)
 }
