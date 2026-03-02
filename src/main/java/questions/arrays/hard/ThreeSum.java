@@ -1,13 +1,17 @@
-package questions.arrays;
+package questions.arrays.hard;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubsetsUsingBitManuplation {
+public class ThreeSum {
+
+    //input -  nums = [-1,0,1,2,-1,-4]
+    //output  -  [[-1,-1,2],[-1,0,1]]
 
     public static void main(String[] args) {
 
         int[] nums = {-1,0,1,2,-1,-4};
+//        nums = [-1,0,1,2,-1,-4]
         int n = nums.length;
 
         // Total subsets = 2^n
@@ -22,13 +26,17 @@ public class SubsetsUsingBitManuplation {
                     subset.add(nums[bit]);
                 }
             }
+            int sum  = 0;
+            for(int i:subset){
+                sum = sum + i;
+            }
+            if(sum == 0 && subset.size()==3){
+                System.out.println(subset);
+            }
 
-            System.out.println(subset);
         }
-        //Time: O(n × 2^n)
-        //for outer loop 2^n
-        //for inner loop n
-        //Space: O(n) for each subset
-        //from List<Integer> subset = new ArrayList<>();
+
     }
+
+
 }
