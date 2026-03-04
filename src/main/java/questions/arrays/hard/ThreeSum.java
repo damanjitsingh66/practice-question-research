@@ -32,33 +32,34 @@ public class ThreeSum {
             }
 
             if(sum == 0 && subset.size()==3){
+                boolean alreadyExists = false;
 
-                if(resultantSubsets.isEmpty()){
-                    resultantSubsets.add(subset);
-                }
-                else{
+                for (List<Integer> presentSubsets : resultantSubsets) {
 
+                    int presentElementCount = 0;
 
-                        for(List<Integer> presentSubsets : resultantSubsets){
-                            int presentElementCount = 0;
-                            for(Integer element: subset) {
-
-                                for (Integer presentElement : presentSubsets) {
-
-                                    if (Objects.equals(element, presentElement)) {
-                                        presentElementCount++;
-                                    }
-                                }
+                    for (Integer element : subset) {
+                        for (Integer presentElement : presentSubsets) {
+                            if (Objects.equals(element, presentElement)) {
+                                presentElementCount++;
                             }
-                            if(presentElementCount!=3){
-                                resultantSubsets.add(subset);
-                            }
+                        }
+                    }
 
+                    if (presentElementCount == 3) {
+                        alreadyExists = true;
+                        break;
                     }
                 }
 
+                if (!alreadyExists) {
+                    resultantSubsets.add(subset);
                 }
-        }
-
+              }
+         }
+        System.out.println(resultantSubsets);
     }
 }
+//my brute force solution
+//Time Complexity	O(n · 2ⁿ)
+//Space Complexity	O(n³)
