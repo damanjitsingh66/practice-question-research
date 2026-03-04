@@ -1,8 +1,6 @@
 package questions.arrays.hard;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class ThreeSum {
 
@@ -10,56 +8,30 @@ public class ThreeSum {
     //output  -  [[-1,-1,2],[-1,0,1]]
 
     public static void main(String[] args) {
-        int[] nums = {-1,0,1,2,-1,-4};
+        int[] nums = {-1, 0, 1, 2, -1, -4};
 //        nums = [-1,0,1,2,-1,-4]
         int n = nums.length;
-        // Total subsets = 2^n
-        int totalSubsets = 1 << n; // 2^n
-        List<List<Integer>> resultantSubsets = new ArrayList<>();
 
-        for (int mask = 0; mask < totalSubsets; mask++) {
-            List<Integer> subset = new ArrayList<>();
+        Set<List<Integer>> sets = new HashSet<>();
 
-            // Check each bit
-            for (int bit = 0; bit < n; bit++) {
-                if ((mask & (1 << bit)) != 0) {
-                    subset.add(nums[bit]);
-                }
-            }
-            int sum  = 0;
-            for(int i:subset){
-                sum = sum + i;
-            }
+        for(int i=0; i<n;i++){
 
-            if(sum == 0 && subset.size()==3){
-                boolean alreadyExists = false;
+            for(int j= i+1; j<n;j++){
 
-                for (List<Integer> presentSubsets : resultantSubsets) {
+                for(int k = j+1; k<n; k++){
 
-                    int presentElementCount = 0;
+                    if (nums[i] + nums[j] + nums[k]==0) {
+                        List<Integer> triplet = Arrays.asList(nums[i], nums[j], nums[k]);
+                        Collections.sort(triplet);
+                        sets.add(triplet);
 
-                    for (Integer element : subset) {
-                        for (Integer presentElement : presentSubsets) {
-                            if (Objects.equals(element, presentElement)) {
-                                presentElementCount++;
-                            }
-                        }
-                    }
-
-                    if (presentElementCount == 3) {
-                        alreadyExists = true;
-                        break;
                     }
                 }
-
-                if (!alreadyExists) {
-                    resultantSubsets.add(subset);
-                }
-              }
-         }
-        System.out.println(resultantSubsets);
+            }
+        }
+        System.out.println(sets);
     }
 }
-//my brute force solution
-//Time Complexity	O(n · 2ⁿ)
-//Space Complexity	O(n³)
+
+//1. Time Complexity:O(n^3. log3)
+//Space Complexity: O(2.M)
