@@ -8,30 +8,58 @@ public class ThreeSum {
     //output  -  [[-1,-1,2],[-1,0,1]]
 
     public static void main(String[] args) {
-        int[] nums = {-1, 0, 1, 2, -1, -4};
-//        nums = [-1,0,1,2,-1,-4]
-        int n = nums.length;
+        int[] arr = {-1, 0, 1, 2, -1, -4};
+        int n = arr.length;
 
-        Set<List<Integer>> sets = new HashSet<>();
+        List<List<Integer>> res = threeSum(arr, n);
 
-        for(int i=0; i<n;i++){
+        for (List<Integer> triplet : res) {
+            for (int num : triplet) System.out.print(num + " ");
+            System.out.println();
+        }
+    }
 
-            for(int j= i+1; j<n;j++){
+    public static List<List<Integer>> threeSum(int[] arr, int n) {
+        // Sort the array
+        Arrays.sort(arr);
+        // Store final result
+        List<List<Integer>> ans = new ArrayList<>();
 
-                for(int k = j+1; k<n; k++){
+        // First loop for first element
+        for (int i = 0; i < n; i++) {
+            // Skip duplicates for first element
+            if (i > 0 && arr[i] == arr[i - 1]) continue;
 
-                    if (nums[i] + nums[j] + nums[k]==0) {
-                        List<Integer> triplet = Arrays.asList(nums[i], nums[j], nums[k]);
-                        Collections.sort(triplet);
-                        sets.add(triplet);
+            // Two pointers
+            int left = i + 1, right = n - 1;
 
-                    }
+            // Find pairs for current arr[i]
+            while (left < right) {
+                int sum = arr[i] + arr[left] + arr[right];
+
+                if (sum == 0) {
+                    ans.add(Arrays.asList(arr[i], arr[left], arr[right]));
+                    left++;
+                    right--;
+
+                    // Skip duplicates for left
+                    while (left < right && arr[left] == arr[left - 1]) left++;
+                    // Skip duplicates for right
+                    while (left < right && arr[right] == arr[right + 1]) right--;
                 }
+                else if (sum < 0) left++;
+                else right--;
             }
         }
-        System.out.println(sets);
+        return ans;
     }
 }
 
-//1. Time Complexity:O(n^3. log3)
-//Space Complexity: O(2.M)
+
+
+
+
+
+
+//1. Time Complexity:O(n²)
+//Space Complexity: O(1)
