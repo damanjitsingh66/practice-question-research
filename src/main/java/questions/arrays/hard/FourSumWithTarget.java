@@ -38,16 +38,12 @@ public class FourSumWithTarget {
         int target = 0;
         int n = arr.length;
 
-        List<List<Integer>> res = threeSum(arr, n,target);
+        List<List<Integer>> res = fourSum(arr, n,target);
 
-        for (List<Integer> triplet : res) {
-            for (int num : triplet) System.out.print(num + " ");
-            System.out.println();
-        }
-
+       System.out.println(res);
     }
 
-    public static List<List<Integer>> threeSum(int[] arr, int n, int target) {
+    public static List<List<Integer>> fourSum(int[] arr, int n, int target) {
         // Sort the array
         Arrays.sort(arr);
         // Store final result
