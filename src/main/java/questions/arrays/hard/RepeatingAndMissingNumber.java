@@ -25,7 +25,6 @@ public class RepeatingAndMissingNumber {
             S += nums[i];
             S2 += (long) nums[i] * (long) nums[i];
         }
-
         // Compute the difference values
         long val1 = S - SN; // X - Y
 
