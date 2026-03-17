@@ -10,13 +10,21 @@ public class UpperBound {
     }
 
     public static int element(int[] arr, int k){
+        int low = 0;
+        int high = arr.length-1;
+        int ans = arr.length;
+        while(low<=high){
+            int mid = (low + high)/2;
 
-        for(int i=0; i< arr.length; i++){
-            if(arr[i]>k){
-                return i;
+            if(arr[mid]>k){
+                ans=mid;
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
             }
         }
-       return arr.length;
+       return ans;
            }
 
            //tc - O(N) and //sc - O(1)
