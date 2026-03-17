@@ -6,29 +6,22 @@ public class LowerBound {
 
         int[] arr ={1,3,4,6,6,7,8};
 
-        int k = 5;
+        int k = 0;
 
-        int closestValue = arr[0];
-        int closestIndex = 0;
-        int minimumValue = Math.abs(k-closestValue);
-        for(int i=1; i<arr.length; i++){
+        System.out.println(element(arr,k));
 
-            int currentDifference = Math.abs(k - arr[i]);
-
-            if(currentDifference<minimumValue){
-                minimumValue = currentDifference;
-                closestValue = arr[i];
-                closestIndex = i;
-            }
-
-
-
-        }
-
-
-
-
-System.out.println("closest_value - "+closestValue + "at_index" + closestIndex);
     }
 
+    public static int element(int[] arr, int k){
+
+        for(int i =0; i<arr.length;i++){
+
+            if(arr[i]>=k){
+              return i;
+            }
+        }
+        return arr.length-1;
+    }
+
+    //tc- O(N), sc - O(1)
 }
