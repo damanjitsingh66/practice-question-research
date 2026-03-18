@@ -10,7 +10,7 @@ public class FloorAndCeilInArray {
    // Result: 4 7
     public static void main(String[] args) {
         int[] arr = {3, 4, 7, 8, 10};
-        int x= 9;
+        int x= 1;
 
         List<Integer> result = elements(arr,x);
 
@@ -19,30 +19,32 @@ public class FloorAndCeilInArray {
 
     public static List<Integer> elements(int[] arr, int x){
 
-        int floorElement = x - arr[0];
-        int ceilElement = x - arr[arr.length-1];
-        int resultantCeil = 0;
-        int resultantFloor = 0;
+        int floorElement = Integer.MAX_VALUE;
+        int ceilElement = Integer.MIN_VALUE;
+        int resultantFloor = -1;
+        int resultantCeil = -1;
 
-        for(int i =1; i<arr.length;i++){
+        for (int j : arr) {
 
-            int currentSub = x - arr[i];
-            if(currentSub==0 || floorElement==0 || ceilElement==0){
-                resultantCeil = x;
-                resultantFloor = x;
-                break;
+            int currentSub = x - j;
+
+            if (currentSub == 0) {
+                return Arrays.asList(x, x);
             }
 
-            if(currentSub>=ceilElement && currentSub<0){
+            // ceil
+            if (currentSub < 0 && currentSub > ceilElement) {
                 ceilElement = currentSub;
-                resultantCeil  = arr[i];
-
+                resultantCeil = j;
             }
-            if(floorElement>currentSub && currentSub>0){
+
+            // floor
+            if (currentSub > 0 && currentSub < floorElement) {
                 floorElement = currentSub;
-                resultantFloor = arr[i];
+                resultantFloor = j;
             }
         }
+
         return Arrays.asList(resultantFloor,resultantCeil);
 
     }
