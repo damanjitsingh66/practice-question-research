@@ -50,7 +50,6 @@ public class FloorAndCeilInArray {
         }
         return ans;
     }
-
     //tc-O(log n)
     //sc-O(1)
 }
