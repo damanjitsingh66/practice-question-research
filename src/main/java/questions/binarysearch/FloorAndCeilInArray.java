@@ -10,45 +10,47 @@ public class FloorAndCeilInArray {
    // Result: 4 7
     public static void main(String[] args) {
         int[] arr = {3, 4, 7, 8, 10};
-        int x= 1;
-
-        List<Integer> result = elements(arr,x);
-
-        System.out.println(result);
+        int x= 5;
+        System.out.println("floor - " + floorInArray(arr,x) + " ceil - "+ ceilInArray(arr,x));
     }
 
-    public static List<Integer> elements(int[] arr, int x){
+    public static int ceilInArray(int[] arr,int x){
 
-        int floorElement = Integer.MAX_VALUE;
-        int ceilElement = Integer.MIN_VALUE;
-        int resultantFloor = -1;
-        int resultantCeil = -1;
-
-        for (int j : arr) {
-
-            int currentSub = x - j;
-
-            if (currentSub == 0) {
-                return Arrays.asList(x, x);
+        int low = 0;
+        int high = arr.length-1;
+        int ans = -1;
+        while(low<=high){
+            int mid = (low + high)/2;
+            if(arr[mid]>=x){
+                ans = arr[mid];
+                high = mid - 1;
             }
-
-            // ceil
-            if (currentSub < 0 && currentSub > ceilElement) {
-                ceilElement = currentSub;
-                resultantCeil = j;
-            }
-
-            // floor
-            if (currentSub > 0 && currentSub < floorElement) {
-                floorElement = currentSub;
-                resultantFloor = j;
+            else{
+               low = mid + 1;
             }
         }
-
-        return Arrays.asList(resultantFloor,resultantCeil);
-
+      return ans;
     }
 
-    //tc-O(N)
-    //sc-O(N)
+    public static int floorInArray(int[] arr,int x){
+
+        int low = 0;
+        int high = arr.length-1;
+        int ans = -1;
+        while(low<=high){
+            int mid = (low + high)/2;
+            if(arr[mid]<=x){
+                ans = arr[mid];
+                low = mid + 1;
+
+            }
+            else{
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    //tc-O(log n)
+    //sc-O(1)
 }
