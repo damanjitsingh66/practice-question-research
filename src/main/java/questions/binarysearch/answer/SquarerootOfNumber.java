@@ -4,11 +4,15 @@ public class SquarerootOfNumber {
 
     public static void main(String[] args) {
 
-        int n = 49;
+        int n = 28;
+        int result = 0;
+       for(int i=0; i*i<=n;i++){
+           result = i;
+       }
+       System.out.println(result);
 
-        System.out.println((int)Math.sqrt(n));
-
-        //tc- O(1)
+       //my brute force solution
+        //tc- O(√n)
         //sc-O(1)
 
     }
