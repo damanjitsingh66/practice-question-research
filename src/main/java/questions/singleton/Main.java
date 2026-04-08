@@ -1,17 +1,25 @@
 package questions.singleton;
 
+import java.lang.reflect.Constructor;
 import java.net.SocketImpl;
+import java.security.Signature;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        Singleton singleton1 = Singleton.getInstance();
-        Singleton singleton2 = Singleton.getInstance();
+     Singleton s1= Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
 
-        if(singleton1== singleton2){
-            System.out.println("both are same");
-        }
+
+        Constructor<Singleton> singletonConstructor = Singleton.class.getDeclaredConstructor();
+        singletonConstructor.setAccessible(true);
+        Singleton s4 = singletonConstructor.newInstance();
+
+
+        if(s1==s4){
+         System.out.println("both are equal");
+     }
 
 
     }
