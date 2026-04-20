@@ -5,20 +5,19 @@ public class RootOfaNumber {
 
         int n = 3;
         int m = 81;
-        //output
-        int res = 1;
-        int count = 0;
-        while (res < m) {
-            res *= n;
-            count++;
+
+        int low=1;
+        int high = m;
+
+        while(low < high) {
+
+            int mid = (low + high) / 2;
+
         }
-        if(res == m){
-            System.out.println(count);
+
+
         }
-        else{
-            System.out.println(-1);
-        }
-    }
+
     //brute force
     //tc - O(logₙ m)
     //sc - O(1)
