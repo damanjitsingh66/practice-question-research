@@ -3,25 +3,27 @@ package questions.singleton;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.SynchronousQueue;
 
 public class Singleton {
 
-    private static Singleton instance;
+    private static volatile Singleton instance;
 
-    private Singleton(){
+    public Singleton(){
 
     }
-    public static synchronized Singleton getInstance(){
-        if(instance == null){
-            synchronized (Singleton.class){
-                if(instance == null){
+
+    public static Singleton getInstance(){
+
+        if(instance==null) {
+            synchronized (Singleton.class) {
+                if(instance == null) {
                     instance = new Singleton();
                 }
             }
-            Arrays.asList(1,2);
-
         }
         return instance;
     }
+
 
 }

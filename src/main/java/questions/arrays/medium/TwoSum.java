@@ -1,6 +1,8 @@
 package questions.arrays.medium;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
 
@@ -8,6 +10,8 @@ public class TwoSum {
 
         int[] arr = {1,3,6,7};
         int target = 9;
+
+        System.out.println(Arrays.toString(twoSum(arr, target)));
   //brute force approach
         //tc->O(N^2), sc->O(N)
 //        for(int i=0;i<arr.length;i++){
@@ -21,19 +25,27 @@ public class TwoSum {
 //        }
 
         //optimizic approach
-        int left=0,right=arr.length-1;
-        Arrays.sort(arr);
-        while(left<right) {
-            int sum = arr[left] + arr[right];
-            if (sum == target) {
-                System.out.println(arr[left] + ","+arr[right]);
-                break;
-            } else if (sum < target) left++;
-            else right--;
+
+
+
+//tc-O(n) and sc-O(n)
+
         }
 
-//tc-O(n) and sc-O(1)
+        public static int[] twoSum(int[] arr, int target){
 
+            Map<Integer,Integer> map = new HashMap<>() ;
+            for(int i=0; i<arr.length;i++){
+
+                int ele = target - arr[i];
+                if(map.containsKey(ele)){
+                    return new int[]{map.get(ele),i};
+                }
+               map.put(arr[i],i);
+
+            }
+
+        return new int[]{};
         }
 
 
