@@ -19,11 +19,11 @@ public class MinimumDaysToMakeBouquets {
 
         for(int i=0;i<arr.length; i++){
             if(arr[i]<day){
-               count++;
-               if(count==k){
-                   bouquets++;
-                   count =0;
-               }
+                count++;
+                if(count==k){
+                    bouquets++;
+                    count =0;
+                }
             }else{
                 count=0;
             }
@@ -39,13 +39,23 @@ public class MinimumDaysToMakeBouquets {
         int max = Arrays.stream(arr).max().getAsInt();
 
         //this will iterate till min and max values
-        for(int day=min;day<=max; day++){
-            if(isPossible(arr,day,k,m)){
-                return day;
-            }
 
+        int low  = min;
+        int high = max;
+        int ans = -1;
+
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(isPossible(arr,mid,k,m)){
+                ans = mid;
+                high = mid -1;
+            }else{
+                low = mid + 1;
+            }
         }
-        return -1;
+        return ans;
     }
+    //Time Complexity: O(log(max - min) * n)
+    // Space Complexity: O(1)
 
 }
