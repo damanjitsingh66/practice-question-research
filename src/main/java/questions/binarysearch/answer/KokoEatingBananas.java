@@ -2,42 +2,52 @@ package questions.binarysearch.answer;
 
 import java.util.Arrays;
 
+import static java.lang.Math.ceil;
+
 public class KokoEatingBananas {
 
     public static void main(String[] args) {
 
-        int[] arr = {3,6,7,11};
+        int[] arr = {7, 15, 6, 3};
         int n  = arr.length;
-        int hours = 9;
+        int hours = 8;
 
-
-
-        int max =  Arrays.stream(arr).max().getAsInt();;
-        for(int i=1; i<=max; i++){
-
-            int count = 0;
-
-            for(int j=0; j<n;j++){
-
-                int div = arr[j]/i;
-                int rem = arr[j]%i;
-                if(div==0 && rem==0){
-                    div =1;
-                }
-                if(rem>0){
-                    div = div + 1;
-                }
-                count = count + div;
-            }
-
-            if(count <= hours){
-                System.out.println(i);
-                break;
-            }
-        }
-      //tc = O(mxn)
-        //sc = O(1)
-
+        System.out.println(bananasToBeEated(arr,hours));
 
     }
+
+    public static int calculateHours(int[] arr, int speed){
+         int totalH =0;
+        for(int bananas : arr){
+
+            totalH += (int)Math.ceil((double)bananas / speed);
+        }
+        return totalH;
+    }
+
+    public static int bananasToBeEated(int[] arr, int hours){
+        int max_ele = Arrays.stream(arr).max().getAsInt();
+        int low = 0;
+        int high =max_ele;
+        int ans = max_ele;
+
+        while(low<=high){
+            int mid  = (low + high)/2;
+            int calculatedHours = calculateHours(arr,mid);
+
+            if(calculatedHours<=hours){
+               high = mid -1;
+               ans = mid;
+            }else{
+                low = mid + 1;
+            }
+
+        }
+
+    return ans;
+
+    }
+
+    //tc - O(N log n Max(arr[]))
+    //sc - O(1)
 }
