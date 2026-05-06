@@ -25,7 +25,7 @@ public class StreamOperations {
                 .filter(order -> order.getStatus().equals("Completed"))
                 .collect(Collectors.groupingBy(
                         Order::getCustomerId,
-                        Collectors.summingDouble(Order::getAmount)
+                        Collectors.averagingDouble(Order::getAmount)
                 ))
                 .entrySet()
                 .stream()
