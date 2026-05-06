@@ -21,15 +21,22 @@ public class StreamOperations {
                                          new Order(101,"Completed",450));
 
 //this will return the flatmap of the integer double response
-        Map<Integer, Double> finalMap = orders.stream()
+        List<OrderResponse> orderResponses = orders.stream()
                 .filter(order -> order.getStatus().equals("Completed"))
                 .collect(Collectors.groupingBy(
                         Order::getCustomerId,
                         Collectors.summingDouble(Order::getAmount)
-                ));
-
-        finalMap.forEach((customerId, totalAmount) -> {
-            System.out.println(customerId + " -> " + totalAmount);
-        });
+                ))
+                .entrySet()
+                .stream()
+                .map(entry -> new OrderResponse(
+                        entry.getKey(),
+                         entry.getValue()
+                        )
+                        )
+                        .toList();
+        for(OrderResponse or : orderResponses){
+            System.out.println("customerId :-" + or.getCustomerId() + " amount:- " + or.getAmount());
+        }
     }
 }
