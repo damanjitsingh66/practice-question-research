@@ -1,9 +1,6 @@
 package StreamOpreations;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamOperations {
@@ -20,23 +17,23 @@ public class StreamOperations {
                                          new Order(103,"Completed",4504),
                                          new Order(101,"Completed",450));
 
-//this will return the flatmap of the integer double response
-        List<OrderResponse> orderResponses = orders.stream()
+        Optional<OrderResponse> maxOrder = orders.stream()
                 .filter(order -> order.getStatus().equals("Completed"))
                 .collect(Collectors.groupingBy(
                         Order::getCustomerId,
-                        Collectors.averagingDouble(Order::getAmount)
+                        Collectors.summingDouble(Order::getAmount)
                 ))
                 .entrySet()
                 .stream()
+                .max(Map.Entry.comparingByValue())
                 .map(entry -> new OrderResponse(
                         entry.getKey(),
-                         entry.getValue()
-                        )
-                        )
-                        .toList();
-        for(OrderResponse or : orderResponses){
-            System.out.println("customerId :-" + or.getCustomerId() + " amount:- " + or.getAmount());
-        }
+                        entry.getValue()
+                ));
+
+        maxOrder.ifPresent(or ->
+                System.out.println("customerId :- " + or.getCustomerId() +
+                        " amount :- " + or.getAmount())
+        );
     }
 }
