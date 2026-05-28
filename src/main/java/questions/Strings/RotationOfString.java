@@ -11,15 +11,8 @@ public class RotationOfString {
         if(s.length()!=goal.length()){
             return false;
         }
-        String res = s;
-        for(int i=0;i<s.length();i++){
-             res = res.substring(1);
-             res = res + s.charAt(i);
-             if(res.equals(goal)){
-                 return true;
-             }
-        }
-        return false;
+             String res = s+s;
+        return res.contains(goal);
     }
 }
-//my solution
+//tc- O(N)
