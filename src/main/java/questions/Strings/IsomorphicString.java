@@ -7,8 +7,8 @@ public class IsomorphicString {
 
     public static void main(String[] args) {
 
-        String s = "aa";
-        String t = "ab";
+        String s = "people";
+        String t = "tiogt";
 
         System.out.println(isIsomorphic(s, t));
     }
