@@ -22,3 +22,4 @@ public class RotationOfString {
         return false;
     }
 }
+//my solution
