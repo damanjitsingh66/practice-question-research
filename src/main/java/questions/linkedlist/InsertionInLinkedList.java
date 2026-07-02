@@ -1,4 +1,4 @@
-package questions.graph;
+package questions.linkedlist;
 
 public class InsertionInLinkedList {
     public static void main(String[] args) {

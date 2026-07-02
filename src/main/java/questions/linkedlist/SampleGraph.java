@@ -1,4 +1,4 @@
-package questions.graph;
+package questions.linkedlist;
 
 public class SampleGraph {
 
@@ -6,7 +6,7 @@ public class SampleGraph {
 
         int[] arr = {2,5,8,7};
 
-        Node y = new Node(arr[0]);
+        Node2 y = new Node2(arr[0]);
 
         System.out.println(y);
 
@@ -16,9 +16,9 @@ public class SampleGraph {
 
 class Node{
     int data;
-    Node next;
+    Node2 next;
 
-  Node(int data1, Node next1){
+  Node(int data1, Node2 next1){
       data = data1;
       next = next1;
   }
