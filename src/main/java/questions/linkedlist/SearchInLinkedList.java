@@ -1,8 +1,9 @@
 package questions.linkedlist;
 
-public class DeletionInLinkedList {
-
+public class SearchInLinkedList
+{
     public static void main(String[] args) {
+        int serach = 0;
         int i = 2;
         int n = 7;
 
@@ -21,32 +22,20 @@ public class DeletionInLinkedList {
             tempc = tempc.next;
         }
 
-        Node tempv = delete(l);
-        while(tempv!=null){
-            System.out.println( "after node element is - " + tempv.data);
-            tempv = tempv.next;
-        }
+        System.out.println(" element found  - " + searchInLinkedList(l,serach));
     }
+    public static boolean searchInLinkedList(Node ll, int target){
 
-    public static Node delete(Node ll){
-
-        if(ll == null || ll.next == null){
-            return null;
-        }
-
+        boolean result = false;
         Node curr = ll;
-        while(curr.next.next!=null){
+        while(curr!=null){
+            if (curr.data == target) {
+                result = true;
+                break;
+            }
             curr = curr.next;
+
         }
-        curr.next = null;
-
-        return ll;
+        return result;
     }
-
-
-
 }
-
-
-
-

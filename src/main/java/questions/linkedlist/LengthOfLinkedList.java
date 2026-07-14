@@ -1,6 +1,6 @@
 package questions.linkedlist;
 
-public class DeletionInLinkedList {
+public class LengthOfLinkedList {
 
     public static void main(String[] args) {
         int i = 2;
@@ -21,32 +21,21 @@ public class DeletionInLinkedList {
             tempc = tempc.next;
         }
 
-        Node tempv = delete(l);
-        while(tempv!=null){
-            System.out.println( "after node element is - " + tempv.data);
-            tempv = tempv.next;
-        }
+       System.out.println("count is - " + lengthOfLL(l));
     }
+    public static int lengthOfLL(Node ll){
 
-    public static Node delete(Node ll){
-
-        if(ll == null || ll.next == null){
-            return null;
+        if(ll.next == null){
+            return 1;
         }
-
+        int count = 2;
         Node curr = ll;
         while(curr.next.next!=null){
             curr = curr.next;
+            count++;
         }
-        curr.next = null;
 
-        return ll;
+        return count;
     }
 
-
-
 }
-
-
-
-
