@@ -1,4 +1,4 @@
-package questions.linkedlist;
+package questions.linkedlist.onedimensional;
 
 public class InsertionInLinkedList {
 

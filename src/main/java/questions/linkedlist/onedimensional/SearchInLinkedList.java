@@ -1,8 +1,9 @@
-package questions.linkedlist;
+package questions.linkedlist.onedimensional;
 
-public class LengthOfLinkedList {
-
+public class SearchInLinkedList
+{
     public static void main(String[] args) {
+        int serach = 0;
         int i = 2;
         int n = 7;
 
@@ -21,21 +22,20 @@ public class LengthOfLinkedList {
             tempc = tempc.next;
         }
 
-       System.out.println("count is - " + lengthOfLL(l));
+        System.out.println(" element found  - " + searchInLinkedList(l,serach));
     }
-    public static int lengthOfLL(Node ll){
+    public static boolean searchInLinkedList(Node ll, int target){
 
-        if(ll.next == null){
-            return 1;
-        }
-        int count = 2;
+        boolean result = false;
         Node curr = ll;
-        while(curr.next.next!=null){
+        while(curr!=null){
+            if (curr.data == target) {
+                result = true;
+                break;
+            }
             curr = curr.next;
-            count++;
+
         }
-
-        return count;
+        return result;
     }
-
 }
