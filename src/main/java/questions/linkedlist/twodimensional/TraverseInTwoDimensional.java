@@ -7,8 +7,13 @@ public class TraverseInTwoDimensional {
         int first = 1;
         Node ddl = new Node(first);
 
+        int[] arr = {1,2,3,4,5};
 
-
+        Node res_arr = convertArrToDLL(arr);
+        while(res_arr!=null){
+            System.out.println("element is : - " + res_arr.data);
+            res_arr = res_arr.next;
+        }
 
     }
 
