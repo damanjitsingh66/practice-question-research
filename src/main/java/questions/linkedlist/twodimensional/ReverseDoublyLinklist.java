@@ -6,11 +6,25 @@ public class ReverseDoublyLinklist {
         int[] arr = {1,2,3,4,5,6};
 
         Node convertedLL = convertArrToDLL(arr);
-
-        while(convertedLL!=null){
-            System.out.println("element - "+convertedLL.data);
-            convertedLL = convertedLL.next;
+        Node rev= reverseDoublyLinked(convertedLL);
+        while(rev!=null){
+            System.out.println("element - "+rev.data);
+            rev = rev.next;
         }
+    }
+
+    public static Node reverseDoublyLinked(Node head){
+        Node current = head;
+        Node last = null;
+        while(current!=null){
+            Node temp = current.next;
+            current.next = current.prev;
+            current.prev = temp;
+
+            last = current;
+            current = temp;
+        }
+        return last;
     }
 
     public static Node convertArrToDLL(int[] arr){
