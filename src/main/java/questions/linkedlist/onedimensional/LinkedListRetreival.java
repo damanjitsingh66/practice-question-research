@@ -13,7 +13,7 @@ public class LinkedListRetreival {
           System.out.println(res.data);
            res = res.next;
       }
-      //print all the elements of linked list
+
     }
 
 
