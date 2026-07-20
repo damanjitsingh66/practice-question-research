@@ -2,15 +2,15 @@ package questions.linkedlist.onedimensional;
 
 public class Node {
 
-    int data;
-    Node next;
+   public int data;
+    public Node next;
 
-    Node(int data1){
+    public Node(int data1){
         data = data1;
         next = null;
     }
 
-    Node(int data1, Node head){
+    public Node(int data1, Node head){
         data = data1;
         next = head;
     }
