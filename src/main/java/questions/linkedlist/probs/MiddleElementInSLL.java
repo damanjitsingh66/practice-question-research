@@ -16,18 +16,15 @@ public class MiddleElementInSLL {
             count ++;
         }
         System.out.println(count);
-        int index = count/2;
 
-        int res_count = 0;
-        Node temp2 = sLL;
-        while(temp2!=null){
-            res_count++;
-            temp2 = temp2.next;
-            if(res_count==index) {
-                System.out.println("middle ele - " + temp2.data);
-                break;
-            }
+        Node hare = sLL;
+        Node tortoise = sLL;
+        while(hare!=null && hare.next!=null){
+            tortoise = tortoise.next;
+            hare = hare.next.next;
+
         }
+        System.out.println("mid is -" + tortoise.data);
     }
     public static Node convertArrayToDLL(int[] arr){
         int first = arr[0];
@@ -41,5 +38,5 @@ public class MiddleElementInSLL {
       return res;
     }
 }
-//brute force solution with tc - O(N) overall and org - O(N+N/2)
+//optimal solution with tc - O(N/2) overall
 // sc - O(1)
