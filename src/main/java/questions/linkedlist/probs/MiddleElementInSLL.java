@@ -6,7 +6,7 @@ public class MiddleElementInSLL {
 
     public static void main(String[] args) {
 
-        int[] arr = {1,2,3,4,5,6};
+        int[] arr = {1,2,3,4,5,6,7,8};
         Node sLL = convertArrayToDLL(arr);
         Node temp = sLL;
         int count = 0;
@@ -16,23 +16,18 @@ public class MiddleElementInSLL {
             count ++;
         }
         System.out.println(count);
-        int index = 0;
-        if(count%2==0){
-            index = count/2 + 1;
-        }else{
-            index = count/2;
-        }
+        int index = count/2;
+
         int res_count = 0;
         Node temp2 = sLL;
-        while(sLL!=null){
+        while(temp2!=null){
             res_count++;
+            temp2 = temp2.next;
             if(res_count==index) {
                 System.out.println("middle ele - " + temp2.data);
-                temp2 = temp2.next;
+                break;
             }
-
         }
-
     }
     public static Node convertArrayToDLL(int[] arr){
         int first = arr[0];
@@ -46,3 +41,5 @@ public class MiddleElementInSLL {
       return res;
     }
 }
+//brute force solution with tc - O(N) overall and org - O(N+N/2)
+// sc - O(1)
