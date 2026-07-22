@@ -57,6 +57,22 @@ wake up - 6.00Am
 8.00-9.00(dinner)
 9.00-11.00(ap)
 
+//by day is nice by night less focus
+
+22 july
+wake-up -6.30 AM $
+7.00 to 8.05 AM (gym) $
+office
+10.00-12.00 ep
+12.00 - 1.00 sd
+1.30-2.30 ep
+2.30 - 4.30 llprobs
+4.30-5.30 ep
+6.00-8.00 ip
+8.00-9.00 dinner
+9.00-11.00 ap
+11.00-11.15(plan modification and analysis)
+
 
 
 
