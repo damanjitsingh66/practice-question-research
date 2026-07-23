@@ -68,11 +68,21 @@ office
 1.30-2.30 ep
 2.30 - 4.30 llprobs
 4.30-5.30 ep
-6.00-8.00 ip
+6.00-8.00 ip X
 8.00-9.00 dinner
-9.00-11.00 ap
-11.00-11.15(plan modification and analysis)
+9.00-11.00 ap X
+11.00-11.15(plan modification and analysis) X
 
+23 july
+wake up 6.00 AM
+6.30-8.00AM
+office
+9.00-11.00AM - ep
+11.00-1.00Pm - LL
+1.30-2.30pm - ep
+2.30-3.30pm - LL
+3.30-4.30 - ypip
+4.30-5.30pm - ep
 
 
 
