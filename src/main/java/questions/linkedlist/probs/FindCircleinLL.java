@@ -19,33 +19,29 @@ public class FindCircleinLL {
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
-        n4.next = n1;
+        n4.next = n2;
 
-        List<Integer> elements = new ArrayList<>();
-        Map<Integer,Integer> data = new HashMap<>();
-        Node temp = n1;
-        data.put(n1.data,1);
-        data.put(n2.data,1);
-        while(temp.next.data!=2){
 
-            Node next = temp.next;
-
-            data.put(next.data,data.getOrDefault(next.data, 0) + 1);
-            temp = next;
-        }
-
+       Node temp = n1;
+       Node slow = temp;
+       Node fast = temp;
         boolean inCircle = false;
-        for(Map.Entry<Integer,Integer> e: data.entrySet()){
-            if(e.getValue()>1){
-                inCircle = true;
-            }
+
+        while(fast!=null && fast.next!=null){
+
+           slow  = slow.next;
+           fast = fast.next.next;
+
+           if(slow == fast){
+               inCircle= true;
+               break;
+           }
         }
 
         System.out.println("in circle - " + inCircle);
 
-
-
-
     }
+    //tc = O(n)
+    //sc = O(1)
 
 }
