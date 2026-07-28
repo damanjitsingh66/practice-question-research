@@ -21,24 +21,37 @@ public class FindCircleinLL {
         n3.next = n4;
         n4.next = n2;
 
+        Node res = null;
+        Node slow = n1;
+        Node fast = n1;
 
-       Node temp = n1;
-       Node slow = temp;
-       Node fast = temp;
-        boolean inCircle = false;
+        // Traverse while fast and fast.next are not null
+        while (fast != null && fast.next != null) {
+            // Move slow one step
+            slow = slow.next;
 
-        while(fast!=null && fast.next!=null){
+            // Move fast two steps
+            fast = fast.next.next;
 
-           slow  = slow.next;
-           fast = fast.next.next;
+            // If they meet, cycle is present
+            if (slow == fast) {
+                // Reset slow to head
+                slow = n1;
 
-           if(slow == fast){
-               inCircle= true;
-               break;
-           }
+                // Move both one step to find start of loop
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+
+                // Return the starting node of loop
+                res = slow;
+                break;
+            }
         }
 
-        System.out.println("in circle - " + inCircle);
+
+        System.out.println("in circle first is - " + (res!=null?res.data:null));
 
     }
     //tc = O(n)
