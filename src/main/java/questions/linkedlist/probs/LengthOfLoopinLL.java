@@ -20,25 +20,37 @@ public class LengthOfLoopinLL {
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
-        n4.next = null;
+        n4.next = n2;
 
-        Node temp = n1;
-        int timer = 1;
-        int result = 0;
-        Map<Integer,Integer> resMap = new HashMap<>();
-        while (temp != null) {
+        Node slow = n1;
+        Node fast = n1;
+        int length = 0;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
 
-           if(resMap.containsKey(temp.data)){
-               result = timer - resMap.get(temp.data);
-               break;
-           }
-           resMap.put(temp.data,timer);
-            temp = temp.next;
-           timer++;
+                 if(slow == fast){
+
+                     length = lengthOfLoop(slow);
+                     break;
+                 }
+
+        }
+        System.out.println("length of the loop is : - "+length);
+    }
+
+    public static int lengthOfLoop(Node slow){
+
+        int length = 1;
+        Node pointOfMeet = slow;
+
+        while(pointOfMeet.next != slow){
+            pointOfMeet = pointOfMeet.next;
+            length++;
         }
 
-        System.out.println("total nodes are - " + result);
+        return length;
     }
     }
 //tc - O(N)
-//sc- ON)
+//sc- O(1)
