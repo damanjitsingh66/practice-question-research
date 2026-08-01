@@ -24,24 +24,22 @@ public class IsPlaindromeLL {
         boolean isPalindrome = true;
 
         Node temp = ll;
-        Stack<Integer> rev = new Stack<>();
+        Node prev = null;
+
         while(temp!=null){
-
-            rev.push(temp.data);
-
+            prev = new Node(temp.data,prev);
             temp = temp.next;
-
         }
         Node org = ll;
+        while (prev!=null && org!=null){
 
-        while(org!=null){
-
-            if(org.data!=rev.peek()){
+            if(prev.data!= org.data){
                 isPalindrome=false;
+                break;
             }
-            rev.pop();
-            org = org.next;
 
+            prev = prev.next;
+            org = org.next;
         }
 
     return isPalindrome;
@@ -50,4 +48,5 @@ public class IsPlaindromeLL {
 
     //tc - O(N)
     //sc - O(N)
+    //mine approach
 }
