@@ -1,7 +1,12 @@
 package designPatterns.practice.singleton;
 
 
-public class SingletonDatabase {
+import questions.singleton.Singleton;
+
+import java.io.Serial;
+import java.io.Serializable;
+
+public class SingletonDatabase implements Cloneable, Serializable {
 
     private static volatile SingletonDatabase database;
 
@@ -14,5 +19,25 @@ public class SingletonDatabase {
           }
       }
       return database;
+    }
+
+    //protection against reflection
+
+    private SingletonDatabase()
+    {
+        if(database!=null){
+            throw new RuntimeException("use getInstance() instead");
+        }
+    }
+
+    //protection against clone attack
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+      throw new CloneNotSupportedException();
+    }
+
+    @Serial
+    private Object readResolve(){
+        return database;
     }
 }
