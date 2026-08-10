@@ -3,13 +3,15 @@ package practice;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Student implements Serializable {
+public class Student implements Serializable,Cloneable {
 
 
     public static Student instance ;
 
     private Student() {
-        System.out.println("-> Student constructor called by: " + Thread.currentThread().getName());
+       if(instance!=null){
+           throw new RuntimeException("method not allowed use getInstance() instead:");
+       }
     }
 
     public static Student getInstance() throws InterruptedException {
@@ -26,4 +28,10 @@ public class Student implements Serializable {
     public Object readResolve(){
         return instance;
     }
+
+    @Override
+    public Student clone() throws CloneNotSupportedException {
+     throw new CloneNotSupportedException("clone not supported");
+    }
+
 }
