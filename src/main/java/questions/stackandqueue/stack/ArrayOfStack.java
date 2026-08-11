@@ -8,54 +8,101 @@ public class ArrayOfStack {
 
     public static void main(String[] args) {
 
+        List<String> operations = Arrays.asList(
+                "ArrayStack",
+                "push",
+                "push",
+                "peek",
+                "pop",
+                "isEmpty"
+        );
 
+        List<List<Integer>> operationValues = Arrays.asList(
+                List.of(),
+                List.of(5),
+                List.of(10),
+                List.of(),
+                List.of(),
+                List.of()
+        );
 
-        List<String> operations = Arrays.asList("ArrayStack", "push", "push", "peek", "pop", "isEmpty");
-        List<List<Integer>> operationValues = Arrays.asList(List.of(), List.of(5), List.of(10), List.of(), List.of(), List.of());
+        List<Object> results = new ArrayList<>();
 
-        List<List<Integer>> results = new ArrayList<>();
-        int peek = -1;
-        int size = operations.size();
+        ArrayStack stack = null;
 
-        int i = 0;
-        int[] arr = null;
-        while(i<size){
+        for (int i = 0; i < operations.size(); i++) {
 
-            switch (operations.get(i)){
+            switch (operations.get(i)) {
+
                 case "ArrayStack":
-                  arr = operationValues.get(i).stream().mapToInt(Integer::intValue).toArray();
-                  results.add(Arrays.stream(arr).boxed().toList());
-                  break;
-                case "push":
-                    push(arr,peek,operationValues.get(i).get(0));
+                    stack = new ArrayStack(10);
                     results.add(null);
                     break;
 
+                case "push":
+                    stack.push(operationValues.get(i).get(0));
+                    results.add(null);
+                    break;
 
+                case "pop":
+                    results.add(stack.pop());
+                    break;
+
+                case "peek":
+                    results.add(stack.peek());
+                    break;
+
+                case "isEmpty":
+                    results.add(stack.isEmpty());
+                    break;
+
+                default:
+                    throw new IllegalArgumentException(
+                            "Unknown operation: " + operations.get(i)
+                    );
             }
-
-
-
         }
 
-
-
+        for (Object result : results) {
+            System.out.println(result);
+        }
     }
 
-    private static void push(int[] arr, int peek,int element){
-    peek++;
-    arr[peek]=element;
-    }
-    private static int pop(int[] arr, int peek){
-        int res = arr[peek];
-        peek--;
-        return res;
-    }
-    private static Integer peek(int[] arr,int peek){
-     return arr[peek];
-    }
-    private static boolean isEmpty(int[] arr){
-    return arr==null || arr.length!=0;
-    }
+    static class ArrayStack {
 
+        private final int[] arr;
+        private int top = -1;
+
+        public ArrayStack(int capacity) {
+            arr = new int[capacity];
+        }
+
+        public void push(int element) {
+            if (top == arr.length - 1) {
+                throw new RuntimeException("Stack is full");
+            }
+
+            arr[++top] = element;
+        }
+
+        public int pop() {
+            if (isEmpty()) {
+                throw new RuntimeException("Stack is empty");
+            }
+
+            return arr[top--];
+        }
+
+        public int peek() {
+            if (isEmpty()) {
+                throw new RuntimeException("Stack is empty");
+            }
+
+            return arr[top];
+        }
+
+        public boolean isEmpty() {
+            return top == -1;
+        }
+    }
 }
