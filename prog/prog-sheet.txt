@@ -201,13 +201,57 @@ wakeup - 6.00am $
 1.30-2.30 -ep
 2.30-4.30 - sd + ip
 4.30-5.30 -ep
-6.00-7.00- streching + dinner prep
-7.00-7.30- dinner
-7.30-10.30 - apply + ip
+6.00-8.00- streching + dinner prep
+8.00-8.30- dinner
+8.30-10.30 - apply + ip
+10.30-5.00 - sleep
+5.00-6.00am - apply
+done for the day
+less ip prep----springboot
+
+
+12 Aug 2026
+
+wakeup - 6.00am
+6.45 - 8.00 - workout
+8.00  to 9.00 - ready
+9.00 - 12.00 - ep
+12.00-1.00- sd revision
+
+1.30 - 3.30 - da
+3.30 - 4.30 - ep
+4.30 - 5.30 - sd
+6.00-7.00- dinner
+7.00-10.30 - apply + ip
 10.30 - 11.00 am - plan revise
 then done for the day
 
+13 Aug 2026
 
+wakeup - 6.00am
+6.45 - 8.00 - workout
+8.00  to 9.00 - ready
+9.00 - 2.30 - ep
+
+2.30 - 3.30 - sd  $
+3.30 - 5.30 - da   x
+6.00-7.00- dinner  x
+7.00-10.30 - apply + ip x
+10.30 - 11.00 am - plan revise x
+then done for the day x
+
+14 Aug 2026
+
+wakeup - 8.00am
+8.00  to 9.00 - ready
+9.00 - 2.30 - ep
+
+2.30 - 3.30 - sd  $
+3.30 - 5.30 - da   ep
+6.00-7.00- dinner  x
+7.00-10.30 - apply + ip x
+10.30 - 11.00 am - plan revise x
+then done for the day x
 
 
 
