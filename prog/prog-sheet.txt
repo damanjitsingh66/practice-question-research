@@ -252,6 +252,56 @@ wakeup - 8.00am
 7.00-10.30 - apply + ip x
 10.30 - 11.00 am - plan revise x
 then done for the day x
+--------------------------------
+
+17 Aug
+wake up  - 5.15am
+ready for work - 5.15 - 6.15 am
+6.15 to 7.15 am - ig modification
+7.15-8.30 - sleep raw bus
+8.30 - 9.00 - travel
+9.00-9.30 - spring-boot features + application diff prop vs yml
+9.30 - 10.00 - travel
+
+10.00 - 12.00 - ep standup + requirement understand
+12.00-1.00 - sd
+
+1.30 - 2.00  - ep
+2.00 -4.00 - da
+4.00 - 5.30 - ip
+
+6.00-7.00 - streaching + massage + meditation
+7.00-8.00 - dinner prep + client call + plan analysis
+8.00-8.30 - dinner
+8.30 - 10.30 - app
+10.30-11.00 - da topic revision
+sleep - 6 hours
+morning 5.00-6.00 - college work
+
+focus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

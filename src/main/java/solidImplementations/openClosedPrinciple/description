@@ -1,0 +1,6 @@
+Open and close principle means - Open for extension and closed for modification
+
+in general - when a new requirement comes try to add new code instead of changing existing one.
+
+for example
+public class paument

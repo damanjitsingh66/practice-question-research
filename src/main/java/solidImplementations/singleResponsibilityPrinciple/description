@@ -1,0 +1,51 @@
+Single Responsibility Principle states that a class should have only one reason or responsibility to change
+
+lets suppose that is a user service
+
+  @service
+  public class UserService{
+
+     public void createUser(){
+         //first responsibility
+     }
+
+     public void sendEmail(){
+       //second responsibility
+     }
+     public void generateReport(){
+     //third responsibility
+     }
+  }
+
+  resultant output be must
+
+  1. @service
+   public class UserService{
+
+      public void createUser(){
+
+      }
+   }
+  2. @service
+      public class EmailService{
+
+         public void sendEmail(){
+
+         }
+      }
+  3. @service
+      public class ReportService{
+
+              public void generateReport(){
+
+              }
+           }
+//each one of them must have different responsibility
+
+like in spring-boot architecture we declare
+Controller - for handing all the http requests or request mapping (one purpose)
+Service - for handling all the business logic we declare all of the business logic there
+Repository - for handling all the data base operations we declared all the CRUD operations there.
+
+//its also used in order management.
+
