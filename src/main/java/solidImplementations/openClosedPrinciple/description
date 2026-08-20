@@ -3,4 +3,108 @@ Open and close principle means - Open for extension and closed for modification
 in general - when a new requirement comes try to add new code instead of changing existing one.
 
 for example
-public class paument
+2. O — Open/Closed Principle (OCP)
+Simple definition
+
+Classes should be open for extension but closed for modification.
+
+This sounds complicated, but the idea is simple:
+
+When adding a new feature, try to add new code instead of modifying existing working code.
+
+❌ Bad example
+
+Suppose we have payment processing:
+
+@Service
+public class PaymentService {
+
+
+    public void pay(String type) {
+
+
+        if (type.equals("CREDIT_CARD")) {
+            // credit card payment
+        }
+        else if (type.equals("PAYPAL")) {
+            // PayPal payment
+        }
+        else if (type.equals("UPI")) {
+            // UPI payment
+        }
+    }
+}
+
+Today we have:
+
+Credit Card
+PayPal
+UPI
+
+Tomorrow:
+
+Google Pay
+Stripe
+Apple Pay
+
+We have to keep modifying PaymentService.
+
+That's not ideal.
+
+✅ Better approach
+
+Create an interface:
+
+public interface Payment {
+
+
+    void pay();
+}
+
+Then implementations:
+
+@Service
+public class CreditCardPayment implements Payment {
+
+
+    @Override
+    public void pay() {
+        System.out.println("Credit Card Payment");
+    }
+}
+@Service
+public class UpiPayment implements Payment {
+
+
+    @Override
+    public void pay() {
+        System.out.println("UPI Payment");
+    }
+}
+
+Now if tomorrow we need PayPal:
+
+@Service
+public class PaypalPayment implements Payment {
+
+
+    @Override
+    public void pay() {
+        System.out.println("PayPal Payment");
+    }
+}
+
+We added a new class instead of modifying existing payment classes.
+
+That's OCP.
+
+Think:
+Payment
+   ↑
+   |
+--------------------------
+|          |             |
+Credit     UPI          PayPal
+Card
+
+Spring Boot makes this pattern very easy because Spring can inject implementations through dependency injection.

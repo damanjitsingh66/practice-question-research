@@ -1,0 +1,96 @@
+ L — Liskov Substitution Principle (LSP)
+                    Simple definition
+
+                    A child class should be able to replace its parent class without breaking the application.
+
+                    This is probably the most confusing SOLID principle.
+
+                    Let's use an easy example.
+
+                    Suppose:
+
+                    public class Bird {
+
+
+                        public void fly() {
+                            System.out.println("Flying");
+                        }
+                    }
+
+                    Then:
+
+                    public class Sparrow extends Bird {
+                    }
+
+                    Sparrow can fly, so everything is fine.
+
+                    But now:
+
+                    public class Penguin extends Bird {
+                    }
+
+                    Penguin cannot fly.
+
+                    If we do:
+
+                    Bird bird = new Penguin();
+
+
+                    bird.fly();
+
+                    Our design is broken.
+
+                    The parent says:
+
+                    Bird → can fly
+
+                    But Penguin says:
+
+                    Penguin → cannot fly
+
+                    Therefore Penguin shouldn't inherit from a class that promises flying behavior.
+
+                    ✅ Better design
+
+                    Separate the concepts:
+
+                    public class Bird {
+                    }
+                    public interface Flyable {
+                        void fly();
+                    }
+
+                    Sparrow:
+
+                    public class Sparrow extends Bird implements Flyable {
+
+
+                        @Override
+                        public void fly() {
+                            System.out.println("Sparrow flying");
+                        }
+                    }
+
+                    Penguin:
+
+                    public class Penguin extends Bird {
+                    }
+
+                    Now:
+
+                    Bird
+                     ├── Sparrow → Flyable
+                     │
+                     └── Penguin
+
+                    This follows LSP.
+
+                    Easy way to remember
+
+                    Ask:
+
+                    "Can I replace the parent with the child without unexpected behavior?"
+
+                    If yes → likely LSP.
+
+                    If no → inheritance/design is probably wrong.

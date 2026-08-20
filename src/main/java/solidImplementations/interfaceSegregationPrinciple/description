@@ -1,0 +1,117 @@
+4. I — Interface Segregation Principle (ISP)
+Simple definition
+
+Don't force a class to implement methods it doesn't need.
+
+❌ Bad example
+
+Suppose:
+
+public interface Employee {
+
+
+    void work();
+
+
+    void eat();
+
+
+    void sleep();
+}
+
+Now imagine a RobotEmployee.
+
+public class RobotEmployee implements Employee {
+
+
+    @Override
+    public void work() {
+        System.out.println("Working");
+    }
+
+
+    @Override
+    public void eat() {
+        // Robot doesn't eat!
+    }
+
+
+    @Override
+    public void sleep() {
+        // Robot doesn't sleep!
+    }
+}
+
+We are forcing Robot to implement methods it doesn't need.
+
+✅ Better
+
+Create smaller interfaces:
+
+public interface Workable {
+    void work();
+}
+public interface Eatable {
+    void eat();
+}
+public interface Sleepable {
+    void sleep();
+}
+
+Human:
+
+public class Human implements Workable, Eatable, Sleepable {
+
+
+    public void work() {}
+
+
+    public void eat() {}
+
+
+    public void sleep() {}
+}
+
+Robot:
+
+public class Robot implements Workable {
+
+
+    public void work() {}
+}
+
+Robot only implements what it actually needs.
+
+Spring Boot example
+
+Instead of creating a huge interface:
+
+public interface UserService {
+
+
+    void createUser();
+
+
+    void deleteUser();
+
+
+    void sendEmail();
+
+
+    void generateReport();
+
+
+    void exportExcel();
+
+
+    void processPayment();
+}
+
+You might separate responsibilities:
+
+UserService
+EmailService
+ReportService
+PaymentService
+
+This makes the application easier to maintain.
