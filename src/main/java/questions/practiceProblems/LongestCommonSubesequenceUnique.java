@@ -12,11 +12,12 @@ public class LongestCommonSubesequenceUnique {
        System.out.println( longestCommonSubsequence(input));
 
     }
-   public static int longestCommonSubsequence(String input){
+   public static String longestCommonSubsequence(String input){
 
        Map<Character,Integer> map = new HashMap<>();
        int left = 0;
        int max_length = 0;
+       int startMax = 0;
 
        for(int i=0; i<input.length();i++){
            //i = right can be considered
@@ -26,10 +27,15 @@ public class LongestCommonSubesequenceUnique {
             left = Math.max(left,map.get(ch) + 1);
         }
         map.put(ch,i);
-        max_length = Math.max(max_length,i-left+1);
+
+        int currentLength = i-left+1;
+        if(currentLength>max_length){
+            max_length = currentLength;
+            startMax = left;
+        }
        }
 
-   return max_length;
+   return input.substring(startMax,startMax+max_length);
    }
 
 }
