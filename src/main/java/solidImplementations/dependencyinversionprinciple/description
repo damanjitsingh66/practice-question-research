@@ -1,0 +1,116 @@
+5. D — Dependency Inversion Principle (DIP)
+Simple definition
+
+High-level classes should depend on abstractions, not concrete classes.
+
+This is extremely important in Spring Boot.
+
+❌ Without DIP
+
+Suppose:
+
+public class UserService {
+
+    private MySQLDatabase database = new MySQLDatabase();
+
+    public void saveUser(User user) {
+        database.save(user);
+    }
+}
+
+UserService directly depends on:
+
+MySQLDatabase
+
+Now imagine we want PostgreSQL.
+
+We have to modify UserService.
+
+✅ With DIP
+
+Create an interface:
+
+public interface UserRepository {
+
+    void save(User user);
+}
+
+MySQL:
+
+@Repository
+public class MySQLUserRepository implements UserRepository {
+
+    @Override
+    public void save(User user) {
+        // save to MySQL
+    }
+}
+
+Service:
+
+@Service
+public class UserService {
+
+    private final UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
+
+    public void saveUser(User user) {
+        repository.save(user);
+    }
+}
+
+Notice:
+
+UserService
+     ↓
+UserRepository
+     ↑
+MySQLUserRepository
+
+UserService doesn't care whether the database is:
+
+MySQL
+PostgreSQL
+MongoDB
+Oracle
+
+It only knows:
+
+UserRepository
+Why Spring Boot is closely related to DIP
+
+This is where Dependency Injection comes in.
+
+Spring does this:
+
+@Service
+public class UserService {
+
+    private final UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
+}
+
+Spring creates the dependency and injects it.
+
+Instead of:
+
+UserRepository repository = new MySQLUserRepository();
+
+you say:
+
+UserRepository repository;
+
+and Spring provides the implementation.
+
+This gives you:
+
+Loose coupling
+Easy testing
+Easy replacement of implementations
+Easier maintenance

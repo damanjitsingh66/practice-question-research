@@ -279,8 +279,92 @@ sleep - 6 hours
 morning 5.00-6.00 - college work
 
 focus
+4 days
+
+topics to cover
+coding questions normal + advance
+core- java
+collections framework + mutithreading
+springboot
+databases
+solid principles, design pattern (singleton + other just overview)
+angular
+microservices
 
 
+18 aug
+6.00-8.00 core java (basics)
+8.00-8.30(dinner)
+8.30-9.30(multithreading)
+9.30-11.30(apply)
+
+morning
+5.30-7.30(coding questions)
+
+19 aug
+11.00-1.00 - multithreading + collections
+3.00-5.00- spring-boot
+
+6.00-8.00-solid principles
+8.00-8.30-dinner
+8.30-10.30 - apply
+
+5.30-7.30-questions
+
+20 aug
+11.00-1.00- mongodb + mysql
+3.00-5.00- angular
+
+in bus
+6.00-8.00-design patterns
+8.00-10.00 - relax + home
+10.00-12.00 - apply
+
+21 aug
+collections + revision + coding questions
+
+22- 23 aug
+I gurugram will note all mistakes.
+
+24 aug
+wake up - 4.30am
+packing of clothes and ready
+till 6.10 am
+6.10-7.30 - travelling + rest sleep
+7.30 - 8.00 am - app (N)
+8.00- 9.00- 10 mint app(N) alot of crowd there
+
+9.00 - 2.30 - ep (H)
+2.30pm-3.30pm - system design
+3.30pm to 5.30 - da
+
+6.00-7.00pm - dinner prep + clean + strech
+7.00-7.30- dinner
+7.30-9.00 - app (L + I + O)
+9.00-9.15 home talk
+9.15 - 11.00pm - core java + plan revise (10 min)(5 min book reading)
+5.00-6.00am - one prob (DSA)
+
+2 hour of core java pending due to client call and not applied due to resume modifications almost able to do sleep 8 hours
+will take this as plently
+
+25 Aug
+wake up  - 6.15 am
+6.15 to 8.10 am - ready _ gym
+8.10 - 9.00 - ready
+9.00- 12.00 - ep
+
+10.00 - 12.00 - ep standup + requirement understand
+12.00-1.00 - da
+
+1.30 - 5.30 - ip - t + pending
+
+6.00-8.00 - app
+8.00-9.00 - dinner
+9.00-11.00 - da + sd
+10.30-11.00 - da topic revision
+sleep - 6 hours
+morning 5.00-6.00 - da R
 
 
 
