@@ -1,0 +1,4 @@
+HashMap - hashmap is used to store key value pairs. It provides the implementation of the map interface. its stores unique key pairs and values can be duplicate.
+
+Syntax -  HashMap<Integer,Integer> map = new HashMap<>();
+

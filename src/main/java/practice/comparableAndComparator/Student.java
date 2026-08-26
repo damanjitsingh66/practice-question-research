@@ -1,4 +1,4 @@
-package practice;
+package practice.comparableAndComparator;
 
 import java.io.Serial;
 import java.io.Serializable;

@@ -1,8 +1,6 @@
-package practice;
+package practice.comparableAndComparator;
 
-import java.io.*;
 import java.lang.reflect.Constructor;
-import java.util.concurrent.atomic.AtomicLongArray;
 
 public class Main {
     public static void main(String[] args) throws Exception {
