@@ -1,0 +1,6 @@
+thread - a thread is the smallest unit of execution within a process. there are multiple threads works for single procees.
+process - process is an instance of a program that has been executed. when a program is run os creates a process for its execution.
+program is set of instruction that is written in programming language that tells the computer how to perform tasks.
+multhreading - when multiple threads works together to complete one task or process is known as multithreading
+
+multitasking - the execution of multiple process simultaneously is known as multitasking.

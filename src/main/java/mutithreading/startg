@@ -1,0 +1,12 @@
+1- different ways to declare threads + introduction
+2- different states + methods
+3. methods + synchronization (synchronized + atomic integer)
+4.  volatile keyword + difference between all of them + locks
+5. types of locks with implementation
+6. read/write locking all done
+7. deadlock + thread communication + revision all concepts first week
+8. Executor Framework+types of executor
+9.  types of executor + executor service
+10. future + completable future
+11. count down latch
+12. cyclic barier  -- revise all

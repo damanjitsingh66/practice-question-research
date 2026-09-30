@@ -6,7 +6,6 @@ import java.util.Deque;
 
 public class NextGreaterElement2 {
 
-
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         int[] res = new int[arr.length];
@@ -64,5 +63,4 @@ public class NextGreaterElement2 {
         //us the time complexity of tc - O(N) and sc = O(N)
 
     }
-
 }

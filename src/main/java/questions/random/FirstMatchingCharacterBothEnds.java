@@ -1,7 +1,5 @@
 package questions.random;
 
-import java.io.FilterOutputStream;
-
 public class FirstMatchingCharacterBothEnds {
 
     public static void main(String[] args) {
