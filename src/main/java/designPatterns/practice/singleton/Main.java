@@ -1,6 +1,5 @@
 package designPatterns.practice.singleton;
 
-import com.sun.xml.bind.v2.runtime.reflect.Accessor;
 import questions.linkedlist.onedimensional.SearchInLinkedList;
 import questions.singleton.Singleton;
 

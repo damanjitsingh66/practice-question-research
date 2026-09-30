@@ -366,9 +366,19 @@ wake up  - 6.15 am
 sleep - 6 hours
 morning 5.00-6.00 - da R
 
-
-
-
+31 aug
+monday
+5.00 -8.00 ready + travel
+8.00-9.00 - apply naukri.com
+9.00-11.00 - ep
+11.00-1.00 - dsa 1.30 + revision
+1.30 - 4.30 - ep
+4.30-5.30 - da (multithreading)
+6.00- 7.30 - dinner + fresh + safai
+7.30 - 9.00 - core java
+9.00-10.30 - apply
+10.30- 11.00 - book reading + plan revise
+morning 5.00-6.00- dsa(unthinkable solutions)
 
 
 

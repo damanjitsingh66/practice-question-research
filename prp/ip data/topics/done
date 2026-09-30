@@ -1,0 +1,41 @@
+Core Java -
+OOP, Object class, String vs StringBuilder vs StringBuffer, equals() vs hashCode(),
+Wrapper Classes,Collections Framework, HashMap Internals, LinkedHashMap, TreeMap, Comparable vs Comparator,
+Java 8, Streams API, Lambda, Optional, Functional Interfaces
+Multithreading, Synchronization, ExecutorService, Callable vs Runnable, ConcurrentHashMap
+JVM, Memory Model, Garbage Collection, Serialization
+
+
+Spring Boot	- Spring Architecture, IoC, DI, Bean Lifecycle, @Component, @Service, @Repository
+@Autowired, @Qualifier, @Primary, Bean Scopes, Profiles, Configuration Properties
+REST APIs, Validation, Exception Handling, Global Exception Handler
+Spring Data JPA, Hibernate Lifecycle, Lazy vs Eager, Cascade Types
+@Transactional, AOP, Filters, Interceptors, Spring Security (JWT)
+Microservices, Feign Client, API Gateway, Service Discovery, Circuit Breaker
+
+MySQL + MongoDB	SQL Basics, Primary/Foreign Key, Normalization, CRUD, MongoDB Documents & Collections
+Joins, Group By, Indexing, Aggregation Pipeline
+Transactions, ACID, Isolation Levels, Query Optimization
+Index Optimization, Explain Plan, MongoDB Indexes
+Stored Procedures, Views, Locks, Optimistic Locking
+Replication, Sharding (basics), Backup & Recovery
+
+
+Angular-TypeScript Basics, Components, Modules, Data Binding, Directives
+Routing, Services, Dependency Injection, HTTP Client
+Reactive Forms, Pipes, Lifecycle Hooks
+RxJS Observables, Subjects, Async Pipe
+Guards, Lazy Loading, State Management Basics
+Angular Interceptors & Performance (Change Detection)
+
+
+SDs - Client → Server flow, Layers (Controller → Service → Repository), Explain one API from your project
+Authentication Flow, JWT Flow, Database Design
+API Design, Error Handling, Logging, Swagger
+Caching, Redis Basics (concept), Performance Improvements in Your Project
+Authentication, Authorization, Security in Your Project
+RabbitMQ, Event-Driven Architecture, Production Issues, AI Assistant Integration
+Containerization (Docker Basics)
+Testing & Mocking (JUnit 5 & Mockito):
+Message Brokers (Kafka or RabbitMQ):
+Design Patterns
