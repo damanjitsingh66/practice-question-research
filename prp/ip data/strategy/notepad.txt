@@ -19,9 +19,12 @@ sun - Level Order Traversal + pre,Post,Inorder in one traversal
 IP
 work on the concepts of existing topics must be clear and in mind
 Monday- core java (jvm memory management) + springboot Ioc container types + aop + internalization (questions revision)
-tue -  core java  + springboot
+tue -  core java (garbage collector + outofmemory error) + springboot(IOC containter types)
 wed - db + angular
 thurs - core java  + springboot
 fri - core java  + Introduction project specific or resume specific
 sat - db + angular
 sun - I
+
+Concepts -
+wed - solid principle revision

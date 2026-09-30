@@ -1,6 +1,6 @@
 package mutithreading.methods;
 
-import com.mcp.server.intigration.mutithreading.states.MyThread;
+
 
 public class ThreadMethods extends Thread{
 

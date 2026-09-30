@@ -1,6 +1,7 @@
 package mutithreading.locks;
 
-import com.mcp.server.intigration.mutithreading.locks.explicit.ExplicitCounter;
+
+import mutithreading.locks.explicit.ExplicitCounter;
 import mutithreading.locks.synchronisedorimplicit.ImplicitCounter;
 
 public class CountThread extends Thread{
