@@ -1,0 +1,47 @@
+1.	How does HashMap work internally? 
+2.	What is a hash collision? 
+3.	Why is ConcurrentHashMap thread-safe? 
+4.	ArrayList vs LinkedList. 
+5.	HashSet vs TreeSet. 
+6.	Comparable vs Comparator. 
+7.	Why is String immutable? 
+8.	Explain the String Pool. 
+9.	== vs equals(). 
+10.	StringBuilder vs StringBuffer. 
+11.	Heap vs Stack. 
+12.	Explain Garbage Collection. 
+13.	What makes an object eligible for GC? 
+14.	What are the four OOP principles? 
+15.	Interface vs Abstract Class. 
+16.	Method Overloading vs Overriding. 
+17.	What is an immutable class? 
+18.	wait() vs sleep().         --------ffff
+19.	notify() vs notifyAll(). 
+20.	volatile vs synchronized. 
+21.	What is a race condition? 
+22.	What is a deadlock? 
+23.	Fail-Fast vs Fail-Safe iterators. 
+24.	What is autoboxing and unboxing? 
+25.	Why is Java platform-independent? 
+
+1.	Why is hashCode() important in HashMap? 
+2.	Difference between == and equals(). 
+3.	Checked vs unchecked exceptions. 
+4.	Difference between throw and throws. 
+5.	Why was Lambda introduced? 
+6.	What is a functional interface? 
+7.	Explain Predicate, Function, Consumer, and Supplier. 
+8.	Difference between map() and flatMap(). 
+9.	Difference between filter() and map(). 
+10.	Explain lazy evaluation in Streams. 
+11.	What is Optional and why use it? 
+12.	Difference between Runnable and Callable. 
+13.	Why use ExecutorService instead of creating threads manually? 
+14.	What is synchronization and what problem does it solve? 
+15.	Explain race condition and deadlock. 
+16.	Explain the thread lifecycle. 
+17.	What is the difference between wait(), notify(), and sleep()? 
+18.	What is the difference between ConcurrentHashMap and HashMap? 
+19.	What is immutable class? Why is String immutable? 
+20.	How does a HashMap internally work? 
+

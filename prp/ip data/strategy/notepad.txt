@@ -1,0 +1,27 @@
+Threading -
+Monday- previous done overview
+tue - Rentrant lock + fairness of locks
+wed - deadlock
+thurs - thread commnunication
+fri - Executors framework
+sat - completable future
+sun - volatile keyword + countdown latch + revision all
+
+DSA
+Monday- previous done overview
+tue - LRU cache
+wed - Number of Greater Element to the Right
+thurs - Trees (binary Tree) - Introduction Understand
+fri - InOrder Traversal
+sat - PreOrder Traveral + PostOrder Traversal
+sun - Level Order Traversal + pre,Post,Inorder in one traversal
+
+IP
+work on the concepts of existing topics must be clear and in mind
+Monday- core java (jvm memory management) + springboot Ioc container types + aop + internalization (questions revision)
+tue -  core java  + springboot
+wed - db + angular
+thurs - core java  + springboot
+fri - core java  + Introduction project specific or resume specific
+sat - db + angular
+sun - I
