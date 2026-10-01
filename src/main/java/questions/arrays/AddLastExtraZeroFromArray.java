@@ -29,7 +29,7 @@ public class AddLastExtraZeroFromArray {
 
         for(int i=nk; i<arr.length; i++){
             arr[i] = 0;
-        }
+    }
         System.out.println(Arrays.toString(arr));
     }
 

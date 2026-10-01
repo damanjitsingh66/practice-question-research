@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantExample {
-
+//reentrant lock is the lock that is used to make thread able to acquire the lock again
     private final Lock lock = new ReentrantLock();
 
     private void innerMethod(){
