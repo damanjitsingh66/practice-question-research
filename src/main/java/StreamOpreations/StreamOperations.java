@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 public class StreamOperations {
     public static void main(String[] args) {
-
-
         //problem -1 get the orders where the status is completed and group it by customerid for with addition of amount sum.
         //You have list of orders like
         // Order = [[102,"New",450],[103,"Completed",450],[103,"Pending",450],[103,"Completed",450],[101,"Completed",450]]
