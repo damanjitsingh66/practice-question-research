@@ -25,7 +25,7 @@ public class FindTheRepeatingAndMissingNumber {
                 if (num == nums[j]) {
                     repeatingNumber = num;
                 }
-                j++;
+//                j++;
             }
             uniques.add(num);
         }
