@@ -417,6 +417,20 @@ wake up - 7.45
 
 
 
+oct - 5
+wake up - 5.00
+ready - 5.00- 6.30
+travel -6.30 - 10.00 (half of an hour java interview listening)
+10.00-12.00- ep superset
+12.00-1.00 - dp (threading)
+
+1.30-3.30 - ip + superset task
+3.30 - 5.30 - dsa + superset task
+6.00 -7.00 - safai + relax + napp
+7.00-8.00- ep meet
+8.00-9.00- dinner
+9.00-11.00- app
+
 
 
 
