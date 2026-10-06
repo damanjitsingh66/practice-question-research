@@ -418,6 +418,7 @@ wake up - 7.45
 
 
 oct - 5
+
 wake up - 5.00
 ready - 5.00- 6.30
 travel -6.30 - 10.00 (half of an hour java interview listening)
@@ -431,7 +432,21 @@ travel -6.30 - 10.00 (half of an hour java interview listening)
 8.00-9.00- dinner
 9.00-11.00- app
 
+oct - 6
 
+wake up - 5.00
+pattern reco - 5.00- 5.30
+sleep -5.30 - 6.30 (sleep)
+6.30-.8.00 - gym
+8.00-9.00 - ready
+9.00-12.00- ep
+12.00.1.00 - dp
+
+1.30-3.30 - ip
+3.30 - 5.30 - dsa
+6.00 -8.00- app
+8.00-9.00- dinner
+9.00-10.00- pattern recognising + college work
 
 
 
