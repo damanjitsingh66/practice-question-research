@@ -8,105 +8,80 @@ import java.util.List;
 
 public class InOrderSolution {
 
-    // Tree Node
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
 
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
 //     //recursive
 //    // Inorder Traversal: Left -> Root -> Right
-//    static void inorder(TreeNode root, List<Integer> result) {
-//
-//        // Base case
-//        if (root == null) {
-//            return;
-//        }
-//
-//        // Left
-//        inorder(root.left, result);
-//
-//        // Root
-//        result.add(root.val);
-//
-//        // Right
-//        inorder(root.right, result);
-//    }
-//
-//    public static void main(String[] args) {
-//
-//        /*
-//                 1
-//                /
-//               4
-//              / \
-//             4   2
-//
-//            Inorder:
-//            Left -> Root -> Right
-//
-//            Result:
-//            [4, 4, 2, 1]
-//        */
-//
-//        // Create tree
-//        TreeNode root = new TreeNode(1);
-//
-//        root.left = new TreeNode(4);
-//
-//        root.left.left = new TreeNode(4);
-//        root.left.right = new TreeNode(2);
-//
-//        // Store result
-//        List<Integer> result = new ArrayList<>();
-//
-//        // Call inorder traversal
-//        inorder(root, result);
-//
-//        // Print result
-//        System.out.println(result);
-//    }
+    static void inorder(Node root) {
 
-//    stack based
-public static List<Integer> inorderTraversal(TreeNode root) {
-    List<Integer> result = new ArrayList<>();
-    // Using Deque as a Stack is recommended over the legacy Stack class
-    Deque<TreeNode> stack = new ArrayDeque<>();
-    TreeNode curr = root;
-
-    while (curr != null || !stack.isEmpty()) {
-        // 1. Reach the leftmost node of the current node
-        while (curr != null) {
-            stack.push(curr);
-            curr = curr.left;
+        // Base case
+        if (root == null) {
+            return;
         }
 
-        // 2. Current must be null at this point, so pop from stack
-        curr = stack.pop();
+        // Left
+        inorder(root.left);
 
-        // 3. Add the node's value to the result (Root)
-        result.add(curr.val);
+        // Root
+        System.out.println(root.data);
 
-        // 4. We have visited the node and its left subtree. Now, it's right subtree's turn.
-        curr = curr.right;
+        // Right
+        inorder(root.right);
     }
-
-    return result;
-}
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(4);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(2);
 
-        List<Integer> result = inorderTraversal(root);
-        System.out.println(result);
+        /*
+                 1
+                /
+               4
+              / \
+             4   2
+
+            Inorder:
+            Left -> Root -> Right
+
+            Result:
+            [4, 4, 2, 1]
+        */
+
+        // Create tree
+        Node root = new Node(1);
+
+        root.left = new Node(4);
+
+        root.left.left = new Node(4);
+        root.left.right = new Node(2);
+
+        inorder(root);
+
     }
+
+//    stack based
+//public static List<Integer> inorderTraversal(TreeNode root) {
+//    List<Integer> result = new ArrayList<>();
+//    // Using Deque as a Stack is recommended over the legacy Stack class
+//    Deque<TreeNode> stack = new ArrayDeque<>();
+//    TreeNode curr = root;
+//
+//    while (curr != null || !stack.isEmpty()) {
+//        // 1. Reach the leftmost node of the current node
+//        while (curr != null) {
+//            stack.push(curr);
+//            curr = curr.left;
+//        }
+//
+//        // 2. Current must be null at this point, so pop from stack
+//        curr = stack.pop();
+//
+//        // 3. Add the node's value to the result (Root)
+//        result.add(curr.val);
+//
+//        // 4. We have visited the node and its left subtree. Now, it's right subtree's turn.
+//        curr = curr.right;
+//    }
+//
+//    return result;
+//}
 
 //    //optimized inorder traversal
 //    public static List<Integer> inorderTraversal(TreeNode root) {

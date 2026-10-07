@@ -5,18 +5,33 @@ public class SharedResource {
     private boolean hasData;
 
 
-    public void produce(int value){
-                try{
-
-                    wait();
+    public synchronized void produce(int value){
+                while(hasData){
+                    try{
+                        wait();
+                    }
+                    catch (InterruptedException ex){
+                      Thread.currentThread().interrupt();
+                    }
                 }
-                catch (InterruptedException ex){
-
-                }
+                data = value;
+                hasData = true;
+                System.out.println("Produced - " + value);
+                notify();
     }
-    public int consume(){
-
-        return 0;
+    public synchronized int consume(){
+       while(!hasData){
+           try{
+               wait();
+           }
+           catch (InterruptedException ex){
+               Thread.currentThread().interrupt();
+           }
+       }
+       hasData = false;
+       System.out.println("Consumed - " + data);
+       notify();
+       return data;
     }
 
 

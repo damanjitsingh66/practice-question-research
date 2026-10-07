@@ -6,7 +6,7 @@ import java.util.Map;
 public class LongestCommonSubesequenceUnique {
     public static void main(String[] args) {
 
-        String input = "pwwkew";
+        String input = "abcddabac";
         //output - 3 as abc
 
        System.out.println( longestCommonSubsequence(input));
