@@ -1,5 +1,7 @@
 package questions.binarytree.traversal;
 
+import questions.binarytree.Node;
+
 public class PostOrderTraverse {
     public static void main(String[] args) {
         Node root = new Node(1);

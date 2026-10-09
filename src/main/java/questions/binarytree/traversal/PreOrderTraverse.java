@@ -1,7 +1,6 @@
 package questions.binarytree.traversal;
 
-import java.util.ArrayList;
-import java.util.List;
+import questions.binarytree.Node;
 
 public class PreOrderTraverse {
     public static void main(String[] args) {

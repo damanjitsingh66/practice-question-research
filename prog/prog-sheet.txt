@@ -479,6 +479,19 @@ wake up - 8.25 am
 9.00-11.00-app
 11.00-12.00- pattern rem
 
+oct-9
+wake up - 6.00  D
+6.30-.8.00 - gym D
+8.00-9.00 - ready D
+9.00-11.00 - ep D
+11.00-12.00 - ep
+12.00-1.00 - dp
+1.30 - 3.30 - dsa tree
+3.30-5.30- ip
+6.00-7.00 - app + travel
+7.00-8.00- revise + travel
+8.00-9.30 - fam time + dinner
+9.30-11.00- app
 
 
 

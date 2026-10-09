@@ -1,10 +1,7 @@
 package questions.binarytree.traversal;
 
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import questions.binarytree.Node;
 
 public class InOrderSolution {
 
