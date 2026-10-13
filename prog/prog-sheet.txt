@@ -493,9 +493,18 @@ wake up - 6.00  D
 8.00-9.30 - fam time + dinner
 9.30-11.00- app
 
+oct -13
+wakeup - 5.55
+gym -6.30 - 8.00
+ep - 9.00 - 11.45
+trees - 12.00-1.00
+patt-rev - 1.30 - 2.30
+ip - 2.30 - 4.30
+dp- 4.30 - 5.30
 
-
-
+6.00 - 8.00- appl
+8.00-9.00 - dinner
+9.00 - 10.00- college
 
 
 
