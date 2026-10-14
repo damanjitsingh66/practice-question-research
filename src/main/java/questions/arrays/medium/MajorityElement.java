@@ -9,23 +9,13 @@ public class MajorityElement {
 
         int[] arr = {1,2,3,3,3,3,3,2};
         int n = arr.length;
-        int mid = n/2;
 
         Map<Integer,Integer> map = new HashMap<>();
-        int count =0;
-        for (int i=0; i<n;i++) {
 
-            if(map.get(arr[i])==null){
-                count =0;
-                map.put(arr[i], count++);
-            }
+        for (int j : arr) {
 
-            for(int j=i+1;j<n;j++){
-                if (arr[i] == arr[j]) {
-                    map.put(arr[i], count++);
-                }
-            }
-
+//            map.put(j, map.getOrDefault(j, 0) + 1);
+             map.merge(j,1,Integer::sum);
         }
         Map.Entry<Integer, Integer> maxEntry = null;
 
@@ -35,6 +25,7 @@ public class MajorityElement {
             }
         }
 
+        System.out.println(maxEntry.getKey());
 
     }
 

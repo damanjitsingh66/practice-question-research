@@ -1,6 +1,5 @@
 package mutithreading.locks.Fairness;
 
-import org.j_paine.formatter.EndOfFileWhenStartingReadException;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
