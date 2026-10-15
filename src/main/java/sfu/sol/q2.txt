@@ -1,0 +1,18 @@
+SQL
+SELECT 
+    a.email,
+    COUNT(r.words) AS outputs,
+    MIN(r.words) AS min_words,
+    MAX(r.words) AS max_words,
+    ROUND(AVG(r.words), 2) AS avg_words
+FROM 
+    accounts a
+JOIN 
+    results r ON a.id = r.account_id
+GROUP BY 
+    a.email
+HAVING 
+    AVG(r.words) > 200
+ORDER BY 
+    a.email ASC;
+}

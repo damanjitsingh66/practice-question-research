@@ -1,0 +1,106 @@
+import java.io.*;
+import java.util.*;
+
+enum TransactionType {
+    P2M, P2P, Self
+}
+
+class TransactionSummary {
+    int transactionId;
+    boolean isSenderEligibleForReward;
+}
+
+class Payment {
+    // Map to store total P2M amount spent by each senderId
+    private final Map<Integer, Long> p2mAmountMap = new HashMap<>();
+    
+    // Map to store count of transactions per type for each senderId
+    // senderId -> (TransactionType -> count)
+    private final Map<Integer, Map<TransactionType, Integer>> transactionCountMap = new HashMap<>();
+
+    TransactionSummary makePayment(int transactionId, int senderId, int amount, TransactionType transactionType) {
+        TransactionSummary summary = new TransactionSummary();
+        summary.transactionId = transactionId;
+
+        // 1. Update transaction count for the sender
+        transactionCountMap
+            .computeIfAbsent(senderId, k -> new EnumMap<>(TransactionType.class))
+            .put(transactionType, transactionCountMap.get(senderId).getOrDefault(transactionType, 0) + 1);
+
+        // 2. Determine reward eligibility
+        if (transactionType != TransactionType.P2M) {
+            summary.isSenderEligibleForReward = false;
+        } else {
+            // Update total P2M amount spent by this sender
+            long newTotal = p2mAmountMap.getOrDefault(senderId, 0L) + amount;
+            p2mAmountMap.put(senderId, newTotal);
+
+            // Calculate eligibility: check if sender is in the top 100 P2M total amounts
+            if (p2mAmountMap.size() <= 100) {
+                summary.isSenderEligibleForReward = true;
+            } else {
+                // Find the threshold value of the top 100th total P2M amount
+                List<Long> totals = new ArrayList<>(p2mAmountMap.values());
+                totals.sort(Collections.reverseOrder());
+                long threshold = totals.get(99);
+
+                summary.isSenderEligibleForReward = newTotal >= threshold;
+            }
+        }
+
+        return summary;
+    }
+
+    int getNumberOfTransactions(int senderId, TransactionType transactionType) {
+        if (!transactionCountMap.containsKey(senderId)) {
+            return 0;
+        }
+        return transactionCountMap.get(senderId).getOrDefault(transactionType, 0);
+    }
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out = new PrintWriter(System.out);
+        
+        String firstLine = br.readLine();
+        if (firstLine == null || firstLine.trim().isEmpty()) {
+            return;
+        }
+        
+        int totalNumberOfRequests = Integer.parseInt(firstLine.trim());  
+        Payment payment = new Payment();
+        
+        String[] arr;
+
+        while (totalNumberOfRequests-- > 0) {
+            String line = br.readLine();
+            if (line == null || line.trim().isEmpty()) continue;
+            arr = line.trim().split("\\s+");
+            
+            int transactionId, senderId, amount, res;
+            TransactionType transactionType;
+            
+            switch (arr[0]) {
+                case "makePayment":
+                    transactionId = Integer.parseInt(arr[1]);
+                    senderId = Integer.parseInt(arr[2]);
+                    amount = Integer.parseInt(arr[3]);
+                    transactionType = TransactionType.valueOf(arr[4]);
+                    TransactionSummary transactionSummary = payment.makePayment(transactionId, senderId, amount, transactionType);
+                    out.print(transactionSummary.transactionId + " " + transactionSummary.isSenderEligibleForReward + "\n");
+                    break;
+                    
+                case "getNumberOfTransactions":
+                    senderId = Integer.parseInt(arr[1]);
+                    transactionType = TransactionType.valueOf(arr[2]);
+                    res = payment.getNumberOfTransactions(senderId, transactionType);
+                    out.print(res + "\n");
+                    break;
+            }
+        }
+        out.flush();
+        out.close();
+    }
+}

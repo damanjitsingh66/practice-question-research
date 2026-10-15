@@ -1,0 +1,246 @@
+Here is the complete, correct, and fully integrated code for your Spring Boot project, organized file by file in exact order.
+
+1. application.properties
+Properties
+# Spring Boot File Upload Limits (100 KB Max)
+spring.servlet.multipart.max-file-size=100KB
+spring.servlet.multipart.max-request-size=100KB
+
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:filedb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+2. XFile.java (Model)
+Java
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "x_files")
+public class XFile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "file_group")
+    private String fileGroup;
+
+    @Column(name = "file_name")
+    private String fileName;
+
+    @Lob
+    @Column(name = "file_data", columnDefinition = "LONGBLOB")
+    private byte[] file;
+
+    public XFile() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFileGroup() {
+        return fileGroup;
+    }
+
+    public void setFileGroup(String fileGroup) {
+        this.fileGroup = fileGroup;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+}
+3. XFileRepository.java
+Java
+package com.example.demo.repository;
+
+import com.example.demo.model.XFile;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface XFileRepository extends JpaRepository<XFile, Long> {
+
+    List<XFile> findByFileGroup(String fileGroup);
+
+    Optional<XFile> findByFileGroupAndFileName(String fileGroup, String fileName);
+}
+4. XFileService.java
+Java
+package com.example.demo.service;
+
+import com.example.demo.model.XFile;
+import com.example.demo.repository.XFileRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+@Service
+public class XFileService {
+
+    private final XFileRepository xFileRepository;
+
+    public XFileService(XFileRepository xFileRepository) {
+        this.xFileRepository = xFileRepository;
+    }
+
+    @Transactional
+    public void uploadFiles(String fileGroup, MultipartFile[] files) throws IOException {
+        if (fileGroup == null || fileGroup.trim().isEmpty() || files == null || files.length == 0) {
+            return;
+        }
+
+        for (MultipartFile file : files) {
+            if (file.isEmpty()) {
+                continue;
+            }
+
+            String originalFileName = file.getOriginalFilename();
+            Optional<XFile> existingFileOpt = xFileRepository.findByFileGroupAndFileName(fileGroup, originalFileName);
+
+            XFile xFile;
+            if (existingFileOpt.isPresent()) {
+                xFile = existingFileOpt.get();
+            } else {
+                xFile = new XFile();
+                xFile.setFileGroup(fileGroup);
+                xFile.setFileName(originalFileName);
+            }
+
+            xFile.setFile(file.getBytes());
+            xFileRepository.save(xFile);
+        }
+    }
+
+    public List<XFile> getFilesByGroup(String fileGroup) {
+        return xFileRepository.findByFileGroup(fileGroup);
+    }
+
+    public byte[] createZipArchive(List<XFile> files) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (ZipOutputStream zos = new ZipOutputStream(baos)) {
+            for (XFile xFile : files) {
+                ZipEntry zipEntry = new ZipEntry(xFile.getFileName());
+                zos.putNextEntry(zipEntry);
+                zos.write(xFile.getFile());
+                zos.closeEntry();
+            }
+        }
+        return baos.toByteArray();
+    }
+}
+5. FileController.java
+Java
+package com.example.demo.controller;
+
+import com.example.demo.model.XFile;
+import com.example.demo.service.XFileService;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+
+@RestController
+public class FileController {
+
+    private final XFileService xFileService;
+
+    public FileController(XFileService xFileService) {
+        this.xFileService = xFileService;
+    }
+
+    @PostMapping("/uploader")
+    public ResponseEntity<Void> uploadFiles(
+            @RequestParam("fileGroup") String fileGroup,
+            @RequestParam("files") MultipartFile[] files) throws IOException {
+
+        xFileService.uploadFiles(fileGroup, files);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/downloader")
+    public ResponseEntity<Resource> downloadFiles(@RequestParam("fileGroup") String fileGroup) throws IOException {
+        List<XFile> files = xFileService.getFilesByGroup(fileGroup);
+
+        if (files.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        if (files.size() == 1) {
+            XFile xFile = files.get(0);
+            ByteArrayResource resource = new ByteArrayResource(xFile.getFile());
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + xFile.getFileName() + "\"")
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .contentLength(xFile.getFile().length)
+                    .body(resource);
+        }
+
+        byte[] zipContent = xFileService.createZipArchive(files);
+        ByteArrayResource resource = new ByteArrayResource(zipContent);
+        String zipFileName = fileGroup + ".zip";
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + zipFileName + "\"")
+                .contentType(MediaType.parseMediaType("application/zip"))
+                .contentLength(zipContent.length)
+                .body(resource);
+    }
+}
+6. GlobalExceptionHandler.java
+Java
+package com.example.demo.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<Void> handleMaxSizeException(MaxUploadSizeExceededException exc) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+}
