@@ -2,8 +2,8 @@ package questions.binarytree.medium;
 
 public class DiameterOfBinaryTree {
 
-        static class Node {
-            int data;
+       public static class Node {
+            public int data;
            Node left;
            Node right;
 
