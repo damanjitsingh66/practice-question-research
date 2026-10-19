@@ -517,6 +517,19 @@ ready - 7.00-8.30
 7.00-8.00- dinner + fresh
 8.00-10.30 - app
 
+19- oct
+wake up - 5.00  D
+6.00-8.00- travel + rest  D
+8.00-9.00 - docker + travel;  D
+9.00-10.00 - ep     D
+10.00-12.00- dps mentioned
+12.00.2.00 - core java next important
+2.00-4.00- springboot important
+4.00-5.45 - mutlithreading and stream pending
+6.00-7.15- rest + meal
+7.15-8.00- introduction + previous workings
+8.00-10.00- front end and database
+
 
 
 
