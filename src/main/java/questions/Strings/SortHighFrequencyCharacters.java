@@ -25,3 +25,5 @@ public class SortHighFrequencyCharacters {
         //sc - O(k)
     }
 }
+//Q1. Js and angular questions like routing
+//Q2. Promise, pipes, life cycle hooks

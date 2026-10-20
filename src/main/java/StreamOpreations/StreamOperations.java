@@ -1,5 +1,6 @@
 package StreamOpreations;
 
+import java.security.cert.CertPath;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -33,5 +34,23 @@ public class StreamOperations {
                 System.out.println("customerId :- " + or.getCustomerId() +
                         " amount :- " + or.getAmount())
         );
+
+        //group by list
+        Map<Integer,List<String>> orderGroupedList =  orders.stream()
+                .collect( Collectors.groupingBy(
+                        Order::getCustomerId,
+                        Collectors.mapping(Order::getStatus,Collectors.toList() )
+                ));
+
+        System.out.println(orderGroupedList);
+
+        //group by max
+        Map<Boolean,List<Order>> orderGroupedMaxList =  orders.stream()
+                .collect(  Collectors.partitioningBy(order->order.getAmount()>500.0 ));
+
+        System.out.println(orderGroupedMaxList);
     }
+
+
+
 }

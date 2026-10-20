@@ -41,7 +41,7 @@ public class TwoSum {
                 if(map.containsKey(ele)){
                     return new int[]{map.get(ele),i};
                 }
-               map.put(arr[i],i);
+                map.put(arr[i], i);
 
             }
 

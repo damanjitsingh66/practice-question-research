@@ -527,10 +527,22 @@ wake up - 5.00  D
 2.00-4.00- springboot important
 4.00-5.45 - mutlithreading and stream pending
 6.00-7.15- rest + meal
-7.15-8.00- introduction + previous workings
-8.00-10.00- front end and database
+7.15-8.00- introduction + previous workings  X
+8.00-10.00- front end D and database   X
 
-
+20-oct
+wakeup - 5.30
+6.00-7.30 - gym
+7.30-8.30- ready
+8.30 - 10.00 - ep
+10.00-12.00- stream api + other coding practice
+12.00-2.00- multithreading revise
+2.00-4.00- patterns singleton + others
+4.30 - 5.30 - introduction and project explain
+5.30 - 6.30 - databases
+6.30- 7.30- dinner
+7.30- 9.30 - springboot other topics
+9.30-10.30 - java memory management
 
 
 
