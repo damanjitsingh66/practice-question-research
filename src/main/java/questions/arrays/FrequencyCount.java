@@ -7,16 +7,27 @@ public class FrequencyCount {
 
     public static void main(String[] args) {
 
-      String n = "acvavbab";
+      String n = "acvavbaba";
+
       Map<Character,Integer> map = new HashMap<>();
 
-      for(char c : n.toCharArray()){
-          map.put(c,map.getOrDefault(c,0)+ 1);
+      for(int i=0;i<n.length();i++){
+          char c = n.charAt(i);
+          map.put(c,map.getOrDefault(c,0)+1);
       }
+
+      int max = Integer.MIN_VALUE;
+      for(Map.Entry<Character,Integer> entry : map.entrySet()){
+
+          if(entry.getValue()>max){
+              max = entry.getValue();
+          }
+      }
+      System.out.println("max frequency is - " + max);
 
       String s1= "abc";
       String s2 = "cab";
-        System.out.println(isAnagram(s1,s2));
+        System.out.println("is Anagram - " +isAnagram(s1,s2));
 
 
     }

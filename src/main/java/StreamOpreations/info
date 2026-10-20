@@ -135,3 +135,86 @@ boolean anyMatch(Predicate<? super T> predicate)
 Here ans variable is assigned 0 as the initial value and i is added to it.
 
 Java Program Using all Terminal Operations:
+
+In Java, Collection and Collections sound almost identical but serve entirely different purposes: Collection is an interface used to store and group data, while Collections is a utility class used to manipulate that data.
+Think of Collection as the container where your data lives, and Collections as the toolbox used to sort, search, or modify the container.
+
+Direct Comparison
+
+
+Feature	Collection	Collections
+What is it?	A foundational Interface.	A final Utility Class.
+Purpose	Acts as a data structure to store and group individual objects as a single unit.	Provides helper methods to operate on or return data structures.
+Inheritance	Extends the Iterable interface. It is the root interface for List, Set, and Queue.	Extends the Object class. It cannot be inherited or instantiated.
+Method Types	Contains abstract, default, and static methods (since Java 8).	Contains only static methods.
+Common Methods	add(), remove(), size(), clear(), contains().	sort(), binarySearch(), reverse(), shuffle(), max().
+
+
+Code Example
+
+Here is how both are used together in a Java program:
+java
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Using the Collection interface to store data
+        // ArrayList implements List, which extends Collection
+        Collection<Integer> numbers = new ArrayList<>();
+        numbers.add(9);
+        numbers.add(1);
+        numbers.add(5);
+
+        System.out.println("Original Collection: " + numbers);
+        // Output: [9, 1, 5]
+
+        // 2. Using the Collections utility class to manipulate the data
+        // Note: The sort method requires a List reference
+        List<Integer> numberList = (List<Integer>) numbers;
+        Collections.sort(numberList);
+
+        System.out.println("Sorted using Collections: " + numberList);
+        // Output: [1, 5, 9]
+    }
+}
+Use code with caution.
+If you are preparing for a specific task, let me know:
+• Are you prepping for a technical interview?
+• Do you want to see how to make collections thread-safe or unmodifiable using the Collections class?
+
+
+The primary use case of the method reference (`::`) in Java Streams is to **make your stream pipelines cleaner, more readable, and less repetitive** by replacing boilerplate lambda expressions (`->`) when you are simply calling an existing method.
+
+Here are the practical use cases where it shines:
+
+### 1. Cleaner Data Transformation (`.map()`)
+Instead of writing a lambda to extract a field or call a getter, you point directly to the method.
+* **Without `::`:** `.map(order -> order.getAmount())`
+* **With `::`:** `.map(Order::getAmount)`
+* **Use case:** Extracting specific properties from objects as they flow through a stream pipeline.
+
+### 2. Streamlined Grouping & Aggregations (`Collectors`)
+When running analytics or aggregations on groups of data, method references tell the collector exactly which field or method to evaluate.
+* **Examples:**
+  * `Collectors.groupingBy(Order::getCustomerId)`
+  * `Collectors.summingDouble(Order::getAmount)`
+* **Use case:** Grouping lists by attributes (like department, category, or customer ID) without writing redundant mapping functions.
+
+### 3. Direct Method Execution (`.forEach()`, `.anyMatch()`, etc.)
+When you want to apply an existing utility or object method to every element in a stream.
+* **Examples:**
+  * Printing items: `.forEach(System.out::println)`
+  * Checking conditions: `.anyMatch(String::isEmpty)`
+* **Use case:** Performing side-effects or validations cleanly at the end or middle of a stream.
+
+### 4. Factory and Object Creation (`ClassName::new`)
+You can reference a class constructor to instantiate objects dynamically.
+* **Example:** `.collect(Collectors.toCollection(ArrayList::new))`
+* **Use case:** Providing custom collection suppliers or mapping raw data directly into new object instances.
+
+---
+
+**Summary:** Whenever your lambda expression's *only* job is to call an existing method on an object or class, using `::` reduces visual clutter and lets anyone reading your code focus on the **logic of the stream** rather than syntax boilerplate.

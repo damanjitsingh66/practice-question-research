@@ -1,4 +1,4 @@
-package StreamOpreations;
+package StreamOpreations.orders;
 
 public class Order {
 

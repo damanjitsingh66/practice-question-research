@@ -3,19 +3,20 @@ package questions.arrays;
 public class SecondLargestElement {
 
     public static int findSecondLargest(int[] arr) {
-        int largest = Integer.MIN_VALUE;
-        int secondLargest = Integer.MIN_VALUE;
+      int secondLargest = Integer.MIN_VALUE;
+      int largestElement = Integer.MIN_VALUE;
 
-        for (int num : arr) {
-            if (num > largest) {
-                secondLargest = largest;
-                largest = num;
-            } else if (num > secondLargest && num != largest) {
-                secondLargest = num;
-            }
-        }
+      for (int i=0;i<arr.length;i++){
 
-        return secondLargest;
+          if(arr[i]>largestElement){
+              secondLargest = largestElement;
+              largestElement = arr[i];
+          }
+          else if(arr[i]>secondLargest && arr[i]!=largestElement){
+              secondLargest = arr[i];
+          }
+      }
+         return secondLargest;
     }
 
     public static void main(String[] args) {

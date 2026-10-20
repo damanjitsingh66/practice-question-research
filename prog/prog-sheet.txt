@@ -517,6 +517,19 @@ ready - 7.00-8.30
 7.00-8.00- dinner + fresh
 8.00-10.30 - app
 
+
+oct - 18
+wake up - 8 am
+8.30-10.00 - gym
+10.00-11.00 - breakfast
+11.00-12.00- packing + bath
+12.00 - 2.00- probs basic  D
+2.00-4.00- core java main topics to cover  D
+4.00-6.00 - springboot main topics to cover D
+6.00-7.00- dinner  D
+7.00-9.00- core java + system design
+9.00-10.00- introduction based + project explanation or resume based   X
+
 19- oct
 wake up - 5.00  D
 6.00-8.00- travel + rest  D
