@@ -549,16 +549,28 @@ wakeup - 5.30
 7.30-8.30- ready
 8.30 - 10.00 - ep
 10.00-12.00- stream api + other coding practice
-12.00-2.00- multithreading revise
+12.00-2.00- multithreading revise X
 2.00-4.00- patterns singleton + others
 4.30 - 5.30 - introduction and project explain
-5.30 - 6.30 - databases
+5.30 - 6.30 - databases X
 6.30- 7.30- dinner
 7.30- 9.30 - springboot other topics
 9.30-10.30 - java memory management
 
 
+30-oct
+wakeup - 6.00
+6.30-7.30- workout
+7.30-8.30- ready
+8.30-10.30- od
+10.30-12.00- dps
+12.00-1.00- controller advice
+1.30-3.30- multithreading
+3.30-5.00- joins + frontend
 
+5.30-7.30-core java
+7.30-8.30- dinner
+8.30-10.00- resume
 
 
 

@@ -1,4 +1,7 @@
-package StreamOpreations;
+package StreamOpreations.orders;
+
+import StreamOpreations.orders.Order;
+import StreamOpreations.orders.OrderResponse;
 
 import java.security.cert.CertPath;
 import java.util.*;

@@ -17,7 +17,7 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("question/{id}")
-    public ResponseEntity<?> getQuestion(@PathVariable int id) throws ApplicationException {
+    public ResponseEntity<?> getQuestion(@PathVariable int id) {
 
           Question q  = questionService.getQuestionById(id);
 

@@ -47,8 +47,6 @@ public class Main {
         SingletonDatabase s8 = (SingletonDatabase) in.readObject();
 
 
-
-
         if(s7==s8){
             System.out.println("both non-enumed are same");
         }
