@@ -558,7 +558,7 @@ wakeup - 5.30
 9.30-10.30 - java memory management
 
 
-30-oct
+21-oct
 wakeup - 6.00
 6.30-7.30- workout
 7.30-8.30- ready
@@ -566,13 +566,23 @@ wakeup - 6.00
 10.30-12.00- dps
 12.00-1.00- controller advice
 1.30-3.30- multithreading
-3.30-5.00- joins + frontend
+3.30-5.00- joins + frontend  X
 
-5.30-7.30-core java
+5.30-7.30-core java  X
 7.30-8.30- dinner
-8.30-10.00- resume
+8.30-10.00- resume X
 
-
+22-oct
+wakeup - 5.45
+6.20-7.30 - workout
+7.30-8.30- ready
+8.30-12.00-ep
+12.00-1.00-joins + sql+ monogodb
+1.30-3.30 - core java
+3.30-5.10 - multithreading practice
+6.00-8.00- coding practice
+8.00-9.00- dinner
+9.00-10.30- dsa
 
 
 
